@@ -5,48 +5,55 @@ import {getUserByEmail} from "../../services/UserService"
 
 
 export const Login = ({ setCurrentUser, currentUser }) => {
-    const [email, set] = useState("");  // Input for email
+    const [email, setEmail] = useState("");  // Input for email
     const navigate = useNavigate();  // Hook for navigation after login
-  
-    const handleLogin = (e) => {
+
+    const handleLogin = async (e) => {
       e.preventDefault();
-  
-      // Simulating an API call or database lookup to find user by email
-      return getUserByEmail(email).then((foundUsers) => {
+
+      console.log("Attempting login with email:", email); // Debugging log
+
+      try {
+        const foundUsers = await getUserByEmail(email);
+        console.log("Received response:", foundUsers);  // Debug log
+
         if (foundUsers.length === 1) {
-          const customer = foundUsers[0];
+          const user = foundUsers[0];
+          console.log("User found:", user);  // Debug log
+
           // Storing the authenticated user's information in localStorage
           localStorage.setItem(
-            "rosesThorns_user",
+            "NSSProject_user",
             JSON.stringify({
-              id: customer.id,
-              name: customer.name,
-              businessName: customer.businessName,
-              email: customer.email,
+              id: user.id,  // Use 'id' now
+              name: user.name,
+              email: user.email
             })
           );
-          // Setting the user in the current app state
-          setCurrentUser(customer);
-  
-          // Redirecting the user to the home page ("/")
+          // Set the user in the current app state
+          setCurrentUser(user);
+
+          // Redirect to home page
           navigate("/");
         } else {
-          // Alert user if login fails
           window.alert("Invalid login");
         }
-      });
+      } catch (error) {
+        console.error("Error during login:", error);
+        window.alert("Login failed due to an error.");
+      }
     };
   
     return (
       <main className="auth-container">
         <section>
           <form className="auth-form" onSubmit={handleLogin}>
-            <h1 className="header">Roses and Thorns</h1>
+            <h1 className="header">NSS Final Project</h1>
             <h2>Please sign in</h2>
             <input
               type="email"
               value={email}
-              onChange={(evt) => set(evt.target.value)}
+              onChange={(evt) => setEmail(evt.target.value)}
               placeholder="Email address"
               required
               autoFocus
@@ -56,5 +63,5 @@ export const Login = ({ setCurrentUser, currentUser }) => {
         </section>
         <Link to="/register">Not a member yet?</Link>
       </main>
-    )
-  }
+    );
+  };
