@@ -12,3 +12,9 @@ export const Authorized = ({ children }) => {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 };
+
+
+// IMPORTANT THISIS WHY WE REALLY WANT STORAGE THE KEY PT IS WE CAN CHECK IT VIA AUTHORIZED
+// AND AUTHORIZED BY CHECKING IT WILL KNOW OK NOW CAN RENDER CHILDREN ITS DIRECTLY CHECKING 
+//Check for User in localStorage: The Authorized component checks if there's an item in localStorage with the key "NSSProject_user". 
+//This indicates whether or not a user is logged in. If the user is logged in, their information is stored in localStorage from the login process.
