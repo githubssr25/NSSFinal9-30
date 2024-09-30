@@ -105,11 +105,24 @@ const updateBudget = (event) => {
                 <label> Your new successfully created budget</label>
                 <ul>
                     {Object.entries(newBudget).map(([key, value], index) => {
-                        return (
-                        <li key={index}>
-                            {key}: {value}
-                        </li>
-                        )
+                        if(key === "categoryId") {
+                            const category = categories.find(cat => parseInt(cat.id) === parseInt(value));
+                            return (
+                                <li key={index}>
+                                     Category: {category ? category.category_description : "Unknown Category"}
+                                </li>
+                            )
+                        }
+                        if(key === "allocated_amount" || key === "days_left"){
+                            return (
+                                <li key={index}>
+                                    <ul> {key} : {value} </ul>
+                                </li>
+                            )
+                        }
+                            // If the key isn't one of the specific ones, return null (nothing).
+                        return null; 
+                      
                     })}
                 </ul>
             </section>
