@@ -32,7 +32,8 @@ const addBudget = async () => {
         allocated_amount: newBudget.allocated_amount,
         spent_amount: 0,
         remaining_balance: newBudget.allocated_amount,
-        days_left: newBudget.days_left
+        days_left: newBudget.days_left,
+        budget_name: newBudget.budget_name
     }
     createBudget(budgetItem).then((data) => {
         if(data && data.id) {
@@ -88,6 +89,13 @@ const updateBudget = (event) => {
                 placeholder="What is the allocated amount for this"
                 required
                 />
+                 <input
+                onChange = {updateBudget}
+                type="text"
+                id="budget_name"
+                placeholder="What is the budget name for this"
+                required
+                />
             </fieldset>
             <fieldset>
                  <input
@@ -113,13 +121,14 @@ const updateBudget = (event) => {
                                 </li>
                             )
                         }
-                        if(key === "allocated_amount" || key === "days_left"){
+                        if(key === "allocated_amount" || key==="budget_name" || key === "days_left"){
                             return (
                                 <li key={index}>
                                     <ul> {key} : {value} </ul>
                                 </li>
                             )
                         }
+
                             // If the key isn't one of the specific ones, return null (nothing).
                         return null; 
                       
