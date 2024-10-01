@@ -10,6 +10,7 @@ export const NavBar = () => {
         <li><Link to="/addNewBudget">Add New Budget</Link></li>
         <li><Link to="/enterMoneySpent">Add Money Spent To A Budget</Link></li>
         <li><Link to="/login">Log Out</Link></li>
+        <li> <Link to="/editBudget"> Edit Budget </Link></li>
       </ul>
     </nav>
   );

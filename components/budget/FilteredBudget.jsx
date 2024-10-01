@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { getCategories, getBudgetsByUserId } from "../../services/BudgetService"; // Adjust path as needed
-
-
 
 export const FilteredBudget = ({filterTerm, userId, budgets}) => {
 const [budgetDisplayed, setBudgetDisplayed] = useState([]);
