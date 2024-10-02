@@ -90,3 +90,33 @@ li {
   font-size: 1.1rem;
   color: #333;
 }
+
+.flex-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.allocatedAndBudgetName {
+  gap: 20px;
+/* Ensures the inputs take up available space equally */
+  padding: 50px; /* Adds padding for better readability */
+}
+
+/* Styling for the input to ensure it shows the full placeholder */
+
+.daysLeft {
+  display: flex;
+  align-content: center;
+  width: 100%; /* Or a specific width value like 80%, or 400px */
+  max-width: 400px; /* Optional, to prevent it from growing too large */
+  padding: 40px; /* Adjust padding if needed */
+}
+
+.daysLeft input {
+  flex-grow: 1;  /* Allow the input to grow and take available space */
+  min-width: 150px;  /* Set a minimum width to ensure it doesn't shrink too much */
+  padding: 15px;  /* Adjust padding for better spacing */
+  font-size: 1rem;  /* Ensures the font size is consistent and readable */
+}

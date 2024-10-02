@@ -3,7 +3,8 @@ nav {
     background-color: #007bff;
     padding: 10px 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-direction: row;
   }
   
   /* Navbar list items */
@@ -11,6 +12,7 @@ nav {
     list-style: none;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     margin: 0;
     padding: 0;
     width: 80%;
@@ -32,17 +34,5 @@ nav {
   /* Hover effect on links */
   ul li a:hover {
     color: #ffdd57;
-  }
-  
-  /* Responsive behavior */
-  @media (max-width: 768px) {
-    ul {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    ul li {
-      padding: 8px 0;
-    }
   }
   

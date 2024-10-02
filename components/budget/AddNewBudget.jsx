@@ -67,7 +67,7 @@ const updateBudget = (event) => {
     return (
       <main>
         <h2> Create New Budget </h2>
-        <form onSubmit={handleSubmit}>
+        <form className = "flex-form" onSubmit={handleSubmit}>
           <label> choose a category for the budget you are creating</label>
             <select name="categoryId" 
             value={selectedCategoryId} 
@@ -82,7 +82,7 @@ const updateBudget = (event) => {
               </optgroup>
             </select>
     
-            <fieldset>
+            <fieldset className="allocatedAndBudgetName">
                 <input
                 onChange = {updateBudget}
                 type="number"
@@ -98,7 +98,7 @@ const updateBudget = (event) => {
                 required
                 />
             </fieldset>
-            <fieldset>
+            <fieldset className="daysLeft">
                  <input
                  onChange = {updateBudget}
                  type="number"
