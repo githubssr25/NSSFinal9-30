@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import {
   getBudgetsByUserId,
   deleteBudgetById,
-} from "../../services/BudgetService"; // Assuming you already have deleteBudgetById function
+} from "../../services/BudgetService"; 
 
 export const DeleteBudget = () => {
   const user = JSON.parse(localStorage.getItem("NSSProject_user"));
@@ -10,13 +10,13 @@ export const DeleteBudget = () => {
 
   const [budgets, setBudgets] = useState([]);
   const [selectedBudget, setSelectedBudget] = useState(null);
-  const [deletedBudget, setDeletedBudget] = useState(null); // To store deleted budget details
+  const [deletedBudget, setDeletedBudget] = useState(null);
   const [isDeleted, setIsDeleted] = useState(false);
 
   // Fetch budgets on component mount
   useEffect(() => {
     getBudgetsByUserId(customerId).then((data) => {
-      setBudgets(data); // Set the fetched budgets in state
+      setBudgets(data); 
     });
   }, [customerId]);
 
@@ -28,14 +28,12 @@ export const DeleteBudget = () => {
     setIsDeleted(false); // Reset the delete status when selecting a new budget
   };
 
-  // Function to handle deleting a budget
-  // Function to handle deleting a budget
   const handleDelete = () => {
     if (selectedBudget && selectedBudget.id) {
       deleteBudgetById(selectedBudget.id).then((response) => {
         if (response) {
           setIsDeleted(true);
-          setDeletedBudget(selectedBudget); // Store deleted budget details
+          setDeletedBudget(selectedBudget); 
           setBudgets(
             budgets.filter((budget) => budget.id !== selectedBudget.id)
           ); // Remove deleted budget from state

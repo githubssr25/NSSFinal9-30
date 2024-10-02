@@ -15,7 +15,8 @@ function App() {
       path="/login"
       element={<Login setCurrentUser={setCurrentUser} currentUser={currentUser} />}
       />
-        <Route path="/register" element={<Register />} />
+       <Route path="/register" element={<Register setCurrentUser={setCurrentUser} />} />
+
 
         {/* Catch-all route for the main app */}
         <Route

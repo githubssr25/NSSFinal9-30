@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./AddNewBudget.css"; 
 
 // Assuming you have a function to create a new budget and fetch categories
 import { createBudget, getCategories } from "../../services/BudgetService"; // Adjust path as needed

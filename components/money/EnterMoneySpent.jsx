@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 import { createBudget, getCategories, getBudgetsByUserId, enterMoneySpentForBudget  } from "../../services/BudgetService"; // Adjust path as needed
-
+import "./EnterMoneySpent.css"; // Import the CSS file
 
 export const  EnterMoneySpent = () => {
   const user = JSON.parse(localStorage.getItem("NSSProject_user"));
@@ -116,7 +116,7 @@ export const  EnterMoneySpent = () => {
           <Modal.Title>Money Added Successfully</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>{newBudget.spent_amount} was added to the spent amount on your budget named {newBudget.budget_name} you now have {newBudget.remaining_balance} left over the {newBudget.days_left} days </p>
+          <p>you have added {enteredMoneySpent} dollars to amount spent in your budget. {newBudget.spent_amount} is your new spent amount on your budget named {newBudget.budget_name} you now have {newBudget.remaining_balance} left over the {newBudget.days_left} days </p>
         </Modal.Body>
         <Modal.Footer>
           <button onClick={handleCloseModal}>Close</button>

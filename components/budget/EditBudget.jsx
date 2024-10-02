@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getBudgetsByUserId, editBudget } from '../../services/BudgetService'; // Assuming you already have this
 import { getAllCategories} from "../../services/CategoryService"
+import './EditBudget.css';
+
 export const EditBudget = () => {
   const user = JSON.parse(localStorage.getItem("NSSProject_user"));
   const customerId = user?.id; // This retrieves the customerId if the user is logged in
@@ -115,6 +117,7 @@ const isBudgetChecked = (budget) => {
   return (
     <>
       <h1>Budgets Available for Editing</h1>
+      <h1>To View the Full Details of Any Budget Click the Check Box Next To It</h1>
 
       {/* Select Budget Dropdown */}
       <select id="myBudget" onChange={(e) => chosenBudget(e)}>
@@ -127,7 +130,11 @@ const isBudgetChecked = (budget) => {
         ))}
       </select>
 
+
+
+
    {/* Display Information for All Budgets */}
+
    {budgets.map((budget) => {
       // Move the logic outside JSX
       const isChecked = isBudgetChecked(budget); // Check if this budget is in the checked list
@@ -142,6 +149,7 @@ const isBudgetChecked = (budget) => {
             onChange={handleCheckboxChange}
    />
             Budget Name {budget.budget_name}
+    
           </label>
           
           {/* Conditionally display budget details */}

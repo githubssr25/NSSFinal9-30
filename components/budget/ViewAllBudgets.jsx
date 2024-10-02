@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import {FilteredBudget} from "./FilteredBudget";
 import { getCategories, getBudgetsByUserId } from "../../services/BudgetService"; // Adjust path as needed
-
+import './ViewAllBudgets.css'; // Import the CSS file
 
 export const ViewAllBudgets = () => {
   const user = JSON.parse(localStorage.getItem("NSSProject_user"));

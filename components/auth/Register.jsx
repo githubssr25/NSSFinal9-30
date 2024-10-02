@@ -75,18 +75,19 @@ export const Register = ({ setCurrentUser }) => {
             required
           />
         </fieldset>
-        <fieldset>
-          <input
-            onChange={updateUser}
-            type="password"
-            id="password"
-            placeholder="Password"
-            required
-          />
-        </fieldset>
         <button type="submit">Register</button>
       </form>
       <Link to="/login">Already a member? Sign in here.</Link>
     </main>
   );
 };
+
+//        <fieldset>
+{/* <input
+onChange={updateUser}
+type="password"
+id="password"
+placeholder="Password"
+required
+/>
+</fieldset> */}

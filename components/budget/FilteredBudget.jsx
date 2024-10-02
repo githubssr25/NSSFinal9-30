@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import './FilteredBudget.css'; 
 
 export const FilteredBudget = ({filterTerm, userId, budgets}) => {
 const [budgetDisplayed, setBudgetDisplayed] = useState([]);
