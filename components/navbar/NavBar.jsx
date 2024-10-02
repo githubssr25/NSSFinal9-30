@@ -11,6 +11,7 @@ export const NavBar = () => {
         <li><Link to="/enterMoneySpent">Add Money Spent To A Budget</Link></li>
         <li><Link to="/login">Log Out</Link></li>
         <li> <Link to="/editBudget"> Edit Budget </Link></li>
+        <li> <Link to="/deleteBudget"> Delete Budget </Link></li>
       </ul>
     </nav>
   );

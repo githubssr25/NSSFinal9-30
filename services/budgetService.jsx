@@ -40,6 +40,17 @@ export const editBudget = async (budget) => {
     }).then((res) => res.json());
 }
 
+// Method to delete a budget by ID
+export const deleteBudgetById = async (budgetId) => {
+    return fetch(`http://localhost:8088/budgets/${budgetId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then((response) => response.ok);  // Returns true if the deletion was successful
+};
+
+
 
 //If the foreign key in your budgets table is userId, you would typically expand it using _expand=user.
 // Similarly, for categoryId, you would use _expand=category.
