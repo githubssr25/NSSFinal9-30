@@ -19,18 +19,19 @@ fieldset {
   input, select {
     width: 100%;
     padding: 10px;
+    background-color: white; /* Set background to blue */
+    color: black; /* Set text color to white for visibility */
     margin-bottom: 15px;
     font-size: 1rem;
     border-radius: 5px;
     border: 1px solid #ccc;
-    background-color: #f9f9f9;
   }
   
   /* Button styling */
   button {
     padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
+    background-color: blue;
+    color: black;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -39,7 +40,7 @@ fieldset {
   }
   
   button:hover {
-    background-color: #218838;
+    background-color: green;
   }
   
   /* Success message styling */

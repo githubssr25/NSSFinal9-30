@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom"
 import {getUserByEmail} from "../../services/UserService"
+import "./Login.css"; 
 
 
 export const Login = ({ setCurrentUser, currentUser }) => {
@@ -58,7 +59,7 @@ export const Login = ({ setCurrentUser, currentUser }) => {
               required
               autoFocus
             />
-            <button type="submit">Sign in</button>
+            <button className="sign-in-button" type="submit">Sign in</button>
           </form>
         </section>
         <Link to="/register">Not a member yet?</Link>

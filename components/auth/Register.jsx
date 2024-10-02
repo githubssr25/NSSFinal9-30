@@ -11,6 +11,8 @@ export const Register = ({ setCurrentUser }) => {
   });
   let navigate = useNavigate();
 
+  const [successfulRegister, setSuccessfulRegister] = useState(false);
+
   const registerNewUser = () => {
     const newUser = { ...user };
 
@@ -27,7 +29,7 @@ export const Register = ({ setCurrentUser }) => {
           })
         );
         setCurrentUser(createdUser); // Set the user in app state
-        navigate("/"); // Redirect to home page
+        setSuccessfulRegister(true);
       }
     });
   };
@@ -53,6 +55,9 @@ export const Register = ({ setCurrentUser }) => {
 
   return (
     <main className="auth-container">
+          <p>
+    <Link to="/login">Already a member? Sign in here.</Link>
+    </p>
       <form className="auth-form" onSubmit={handleRegister}>
         <h1 className="header">NSS Final Project Budgets</h1>
         <h2>Please Register</h2>
@@ -77,13 +82,19 @@ export const Register = ({ setCurrentUser }) => {
         </fieldset>
         <button type="submit">Register</button>
       </form>
-      <Link to="/login">Already a member? Sign in here.</Link>
+      <div>
+      { successfulRegister && (
+       <Link to="/login"> Registration successful for new account for {user.name} you can click here to log in </Link>
+      )
+
+      }
+      </div>
     </main>
   );
 };
 
-//        <fieldset>
-{/* <input
+   
+{/*  <fieldset><input
 onChange={updateUser}
 type="password"
 id="password"
