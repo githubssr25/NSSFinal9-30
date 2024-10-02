@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getBudgetsByUserId, editBudget } from '../../services/BudgetService'; // Assuming you already have this
-
+import { getAllCategories} from "../../services/CategoryService"
 export const EditBudget = () => {
   const user = JSON.parse(localStorage.getItem("NSSProject_user"));
   const customerId = user?.id; // This retrieves the customerId if the user is logged in
@@ -11,6 +11,7 @@ export const EditBudget = () => {
   const [editedBudget, setEditedBudget] = useState({}); // To hold the updated budget info
   const [budgetsChecked, setBudgetsChecked] = useState([]);
   const [isEdited, setIsEdited] = useState(false); 
+  const [categories, setCategories] = useState([]);
 
   // Fetch budgets on component mount
   useEffect(() => {
@@ -18,6 +19,12 @@ export const EditBudget = () => {
       setBudgets(data); // Set the fetched budgets in state
     });
   }, [budgets, customerId]);
+
+  useEffect(() => {
+    getAllCategories().then((data) => {
+      setCategories(data);
+    })
+  }, []);
 
   const chosenBudget = (event) => {
     const budgetId = parseInt(event.target.value, 10);
@@ -32,6 +39,13 @@ export const EditBudget = () => {
   const updateBudget = (event) => {
     const copy = { ...editedBudget };
     copy[event.target.id] = event.target.value;
+    setEditedBudget(copy);
+  };
+
+  const updateCategories = (event) => {
+    const categoryId = event.target.value;
+    const copy = { ...editedBudget };
+    copy.categoryId = categoryId;  // Directly set the categoryId field in the budget
     setEditedBudget(copy);
   };
 
@@ -182,6 +196,15 @@ const isBudgetChecked = (budget) => {
               onChange={updateBudget}
             />
 
+  <select id="myCategories" onChange={(e) => updateCategories(e)}>
+        <option value=""> Choose Budget Category to edit </option>
+        {categories.map((eachCategory) => (
+          <option key={eachCategory.id} value={eachCategory.id}>
+            {eachCategory.category_description} - Category Description{" "}
+          </option>
+        ))}
+      </select>
+
             <button type="button" onClick={handleEdit}>
               Save Changes
             </button>
@@ -196,6 +219,10 @@ const isBudgetChecked = (budget) => {
           <li>Budget Name: {editedBudget.budget_name}</li>
           <li>Allocated Amount: {editedBudget.allocated_amount}</li>
           <li>Days Left: {editedBudget.days_left}</li>
+          <li> Category: {
+          categories.find((category) => category.id === parseInt(editedBudget.categoryId))?.category_description || 'Unknown'
+          }
+          </li>
           <li>Remaining Balance: {editedBudget.remaining_balance}</li>
         </ul>
       </div>
