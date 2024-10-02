@@ -30,6 +30,15 @@ export const enterMoneySpentForBudget = async (budget) => {
     }).then((res) => res.json());
 }
 
+export const editBudget = async (budget) => {
+    return fetch(`http://localhost:8088/budgets/${parseInt(budget.id)}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(budget),
+    }).then((res) => res.json());
+}
 
 
 //If the foreign key in your budgets table is userId, you would typically expand it using _expand=user.
