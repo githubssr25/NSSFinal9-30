@@ -17,13 +17,14 @@ section {
   }
   
   select {
-    width: 100%;
-    padding: 10px;
+    width: 50%;
+    padding: 5px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
-    background-color: #fff;
+    color: black;
+    background-color: white;
   }
   
   /* Article styling for form input */
@@ -77,18 +78,11 @@ section {
   align-items: center;
 }
 
-.modal-header {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
 .modal-footer button {
   background-color: #007bff;
   border: none;
-  padding: 10px 20px;
   color: white;
   font-size: 1rem;
-  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -99,4 +93,28 @@ section {
 .modal-body p {
   font-size: 1.2rem;
   margin: 10px 0;
+}
+
+/* Modal header styling */
+.modal-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: grey;  /* Set text color to dark for visibility */
+  background-color: #f9f9f9; /* Light background color */
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Make select dropdown options smaller for smaller screens */
+@media (max-width: 768px) {
+  select {
+    width: 50%; /* Ensure the select field is 100% width */
+    font-size: 0.9rem; /* Reduce font size */
+  }
+
+  /* Reduce padding and font size for the dropdown options */
+  select option {
+    font-size: 0.9rem;
+    padding: 5px;
+  }
 }

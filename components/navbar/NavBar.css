@@ -1,38 +1,65 @@
 /* Navbar container */
 nav {
-    background-color: #007bff;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
+  background-color: #007bff;
+  padding: 0px 0;  /* Reasonable padding for a compact navbar */
+  display: flex;
+  justify-content: center;  /* Center navbar items */
+  align-items: center;
+  flex-direction: column;  /* Stack items vertically */
+  width: 80%;  /* Ensure it takes up the full width */
+}
+
+/* Navbar list items */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;  /* Stack items vertically */
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  width: 100%;  /* Ensure full width for mobile */
+  margin: 0;
+}
+
+/* Navbar list item styling */
+ul li {
+  padding: 5px 0;  /* Reduce padding for compactness */
+  text-align: center;  /* Center align text */
+  width: 100%;  /* Make each item take full width */
+}
+
+/* Link styling */
+ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;  /* Adjust font size for better readability */
+  display: block;
+  width: 100%;
+  padding: 10px;
+}
+
+/* Hover effect on links */
+ul li a:hover {
+  color: #ffdd57;
+}
+
+/* Media query for small screens (e.g., iPhones) */
+@media (max-width: 768px) {
+  nav {
+    padding: 5px 0;  /* Keep small padding on mobile */
+    align-items: center;  /* Ensure items stay centered */
   }
-  
-  /* Navbar list items */
+
   ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    width: 80%;
+    width: 90%;  /* Ensure it doesn't take up too much space */
   }
-  
-  /* Navbar list item styling */
+
   ul li {
-    padding: 10px 15px;
+    padding: 5px 0;  /* Keep padding small for mobile */
   }
-  
-  /* Link styling */
+
   ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s;
+    font-size: 0.9rem;  /* Slightly reduce font size for mobile */
+    padding: 8px;  /* Reduce padding */
   }
-  
-  /* Hover effect on links */
-  ul li a:hover {
-    color: #ffdd57;
-  }
-  
+}

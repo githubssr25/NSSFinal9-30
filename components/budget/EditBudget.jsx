@@ -265,7 +265,7 @@ const isBudgetChecked = (budget) => {
 )}
 
     { cantCompleteAlert && (
-      <p> your transaction cannot be completed. Your {editedBudget.spent_amount} would exceed your {editedBudget.allocated_amount} 
+      <p> your transaction cannot be completed. Your spent amount {editedBudget.spent_amount} would exceed your allocated amount {editedBudget.allocated_amount} 
       . Please try again and raise your allocated amount by at least {editedBudget.spent_amount - editedBudget.allocated_amount} to be able to successfully update your budget.  </p>
     )
 
