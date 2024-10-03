@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import {FilteredBudget} from "./FilteredBudget";
-import { getCategories, getBudgetsByUserId } from "../../services/BudgetService"; // Adjust path as needed
+import { getBudgetsByUserId } from "../../services/BudgetService"; // Adjust path as needed
 import './ViewAllBudgets.css'; // Import the CSS file
 
 export const ViewAllBudgets = () => {
@@ -10,16 +10,24 @@ export const ViewAllBudgets = () => {
   const [budgets, setBudgets] = useState([]);
   const [filterTerm, setFilterTerm] = useState('');
 
+ // Console log for user and customerId
+  console.log('User:', user);
+  console.log('Customer ID:', customerId);
+
   useEffect(() => {
-    getBudgetsByUserId(customerId).then((data) => {
-      setBudgets(data);
-    });
+    if (customerId) {
+      getBudgetsByUserId(customerId).then((data) => {
+        // Log data retrieved from the service
+        console.log('Budgets fetched:', data);
+        setBudgets(data);
+      }).catch((error) => {
+        // Log if there's an error fetching the data
+        console.error('Error fetching budgets:', error);
+      });
+    } else {
+      console.warn('No customerId found, skipping budget fetch');
+    }
   }, [customerId]);
-
-
-
-
-
 
   return (
     <div>

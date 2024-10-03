@@ -9,12 +9,14 @@ export const EditBudget = () => {
 
   // Define the states you'll need
   const [budgets, setBudgets] = useState([]);
-  const [selectedBudget, setSelectedBudget] = useState(null); // To hold the budget user wants to edit
+  const [selectedBudget, setSelectedBudget] = useState({}); // To hold the budget user wants to edit
   const [editedBudget, setEditedBudget] = useState({}); // To hold the updated budget info
   const [budgetsChecked, setBudgetsChecked] = useState([]);
   const [isEdited, setIsEdited] = useState(false); 
   const [categories, setCategories] = useState([]);
   const [cantCompleteAlert, setCantCompleteAlert] = useState(false);
+  const [successfulBudget, setSuccessfulBudget] = useState(null); // New state to store the successful edit
+
 
   // Fetch budgets on component mount
   useEffect(() => {
@@ -94,7 +96,6 @@ const isBudgetChecked = (budget) => {
         let value = editedBudget.spent_amount - editedBudget.allocated_amount;
         alert(`Warning your spent amount exceeds what your new edited allocated budget would be by ${value}`);
         setCantCompleteAlert(true);
-        setEditedBudget({});
         return;
       }
   
@@ -129,9 +130,11 @@ const isBudgetChecked = (budget) => {
     // /?data : b: If the id matches, it replaces the budget in the array with the updated data 
     // (edited budget). If not, it keeps the original budget (b) unchanged.
     setIsEdited(true);  
+        // Store the successful edited budget separately
+        setSuccessfulBudget(data);
   
        //reset selected budget also 
-        setSelectedBudget(null);
+        setSelectedBudget({});
         setEditedBudget({});
 
         setCantCompleteAlert(false);  // Reset alert state after successful edit
@@ -210,7 +213,7 @@ const isBudgetChecked = (budget) => {
             <input
               type="text"
               id="budget_name"
-              value={editedBudget.budget_name}
+               value={editedBudget.budget_name || ""}  // Ensure fallback to empty string
               onChange={updateBudget}
             />
 
@@ -218,7 +221,7 @@ const isBudgetChecked = (budget) => {
             <input
               type="number"
               id="allocated_amount"
-              value={editedBudget.allocated_amount}
+              value={editedBudget.allocated_amount || ""}
               onChange={updateBudget}
             />
 
@@ -226,7 +229,7 @@ const isBudgetChecked = (budget) => {
             <input
               type="number"
               id="days_left"
-              value={editedBudget.days_left}
+              value={editedBudget.days_left || ""}
               onChange={updateBudget}
             />
 
@@ -246,21 +249,20 @@ const isBudgetChecked = (budget) => {
         </fieldset>
       )}
     {/* Display the edited budget */}
-    {isEdited && editedBudget && editedBudget.id && (
-      <div>
-        <h2>Successfully Edited Budget: {editedBudget.budget_name}</h2>
-        <ul>
-          <li>Budget Name: {editedBudget.budget_name}</li>
-          <li>Allocated Amount: {editedBudget.allocated_amount}</li>
-          <li>Days Left: {editedBudget.days_left}</li>
-          <li> Category: {
-          categories.find((category) => category.id === parseInt(editedBudget.categoryId))?.category_description || 'Unknown'
-          }
-          </li>
-          <li>Remaining Balance: {editedBudget.remaining_balance}</li>
-        </ul>
-      </div>
-    )}
+    {isEdited && successfulBudget && (
+  <div>
+    <h2>Successfully Edited Budget: {successfulBudget.budget_name}</h2>
+    <ul>
+      <li>Budget Name: {successfulBudget.budget_name}</li>
+      <li>Allocated Amount: {successfulBudget.allocated_amount}</li>
+      <li>Days Left: {successfulBudget.days_left}</li>
+      <li>Category: {
+        categories.find((category) => category.id === parseInt(successfulBudget.categoryId))?.category_description || 'Unknown'
+      }</li>
+      <li>Remaining Balance: {successfulBudget.remaining_balance}</li>
+    </ul>
+  </div>
+)}
 
     { cantCompleteAlert && (
       <p> your transaction cannot be completed. Your {editedBudget.spent_amount} would exceed your {editedBudget.allocated_amount} 
