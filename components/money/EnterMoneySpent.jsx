@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
-import { createBudget, getCategories, getBudgetsByUserId, enterMoneySpentForBudget  } from "../../services/BudgetService"; // Adjust path as needed
+import { getBudgetsByUserId, enterMoneySpentForBudget  } from "../../services/BudgetService"; // Adjust path as needed
 import "./EnterMoneySpent.css"; // Import the CSS file
 
 export const  EnterMoneySpent = () => {

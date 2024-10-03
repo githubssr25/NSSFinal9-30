@@ -9,7 +9,7 @@ useEffect(() => {
    if(data){
     setBudgetDisplayed(data);
    }
-}, [filterTerm, budgetDisplayed]);
+}, [filterTerm, budgets]);
 
 //.map() is for transforming data — it always returns an array of the same length as the original array.
 // so dont use a map here we arent transforming data were just filtering it 
