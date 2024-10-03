@@ -14,6 +14,7 @@ export const EditBudget = () => {
   const [budgetsChecked, setBudgetsChecked] = useState([]);
   const [isEdited, setIsEdited] = useState(false); 
   const [categories, setCategories] = useState([]);
+  const [cantCompleteAlert, setCantCompleteAlert] = useState(false);
 
   // Fetch budgets on component mount
   useEffect(() => {
@@ -27,6 +28,10 @@ export const EditBudget = () => {
       setCategories(data);
     })
   }, []);
+
+  useEffect(() => {
+    setCantCompleteAlert(false);
+  }, [editedBudget, selectedBudget])
 
   const chosenBudget = (event) => {
     const budgetId = parseInt(event.target.value, 10);
@@ -84,17 +89,35 @@ const isBudgetChecked = (budget) => {
 
   const handleEdit = () => {
 
+      // Check if the spent amount exceeds the allocated amount
+      if (editedBudget.spent_amount > editedBudget.allocated_amount) {
+        let value = editedBudget.spent_amount - editedBudget.allocated_amount;
+        alert(`Warning your spent amount exceeds what your new edited allocated budget would be by ${value}`);
+        setCantCompleteAlert(true);
+        setEditedBudget({});
+        return;
+      }
+  
+      // Case 1: If allocated_amount < remaining_balance, cap remaining_balance
+      if (editedBudget.allocated_amount < editedBudget.remaining_balance) {
+        editedBudget.remaining_balance = editedBudget.allocated_amount;
+      }
+  
+      // Case 2: If allocated_amount increases, recalculate remaining_balance based on spent_amount
+      if (selectedBudget.allocated_amount < editedBudget.allocated_amount) {
+        editedBudget.remaining_balance = editedBudget.allocated_amount - selectedBudget.spent_amount;
+      }
+
     const budgetToSend = {
       id: editedBudget.id,
       userId: customerId,
-      categoryId: editedBudget.id,
+      categoryId: editedBudget.categoryId,
       allocated_amount: editedBudget.allocated_amount,
       spent_amount: editedBudget.spent_amount,
       remaining_balance: editedBudget.remaining_balance,
       days_left: editedBudget.days_left,
       budget_name: editedBudget.budget_name
     }
-
 
     editBudget(budgetToSend).then((data) => {
       if (data && data.id) {
@@ -109,6 +132,9 @@ const isBudgetChecked = (budget) => {
   
        //reset selected budget also 
         setSelectedBudget(null);
+        setEditedBudget({});
+
+        setCantCompleteAlert(false);  // Reset alert state after successful edit
       }
     });
   };
@@ -235,6 +261,13 @@ const isBudgetChecked = (budget) => {
         </ul>
       </div>
     )}
+
+    { cantCompleteAlert && (
+      <p> your transaction cannot be completed. Your {editedBudget.spent_amount} would exceed your {editedBudget.allocated_amount} 
+      . Please try again and raise your allocated amount by at least {editedBudget.spent_amount - editedBudget.allocated_amount} to be able to successfully update your budget.  </p>
+    )
+
+    }
   </>
 )
 }
