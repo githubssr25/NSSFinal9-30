@@ -29,6 +29,91 @@ export const ViewAllBudgets = () => {
     }
   }, [customerId]);
 
+
+  //wrong 
+  // const categoryBasedBudgets = () => {
+ 
+  //   let initialAccumulator = {
+  //     category: {},
+  //     overallAllocated: 0,
+  //     overallSpent: 0,
+  //     overallRemaining: 0
+  //   }
+
+  //   budgets.reduce((acc, indBudget) => {
+  //     const thisObjAmount = indBudget.allocated_amount
+  //     const thisObjSpent = indBudget.spent_amount
+  //     const thisObjBalance = indBudget.remaining_balance
+
+  //     if(!acc[indBudget.categoryId]){
+  //       acc[indBudget.categoryId] = {
+  //         category: indBudget.category,
+  //         category_description: indBudget.category.category_description,
+  //         allocated_amount: thisObjAmount,
+  //         spent_amount: thisObjSpent,
+  //         remaining_balance: thisObjBalance
+  //       },
+  //       acc.overallAllocated += thisObjAmount,
+  //       acc.overallSpent+= thisObjSpent,
+  //       acc.overallRemaining+= thisObjBalance
+  //     } else (acc[indBudget.categoryId]){
+  //     acc[indBudget.categoryId] = {
+  //       category: indBudget.category,
+  //       category_description: indBudget.category.category_description,
+  //       allocated_amount: acc[indBudget.categoryId].allocated_amount + thisObjAmount,
+  //       spent_amount: acc[indBudget.categoryId].spent_amount +thisObjSpent,
+  //       remaining_balance: acc[indBudget.categoryId].remaining_balance + thisObjBalance
+  //     },
+  //     acc.overallAllocated += thisObjAmount,
+  //     acc.overallSpent+= thisObjSpent,
+  //     acc.overallRemaining+= thisObjBalance
+  //   }
+
+  //     return acc;
+
+  //   }, initialAccumulator)
+  // }
+
+  //this is right way but we dont need it so i will keep it like this 
+  // const categoryBasedBudgets = () => {
+
+  //   let initialAccumulator = {
+  //     overallAllocated: 0,
+  //     overallSpent: 0,
+  //     overallRemaining: 0
+  //   };
+  
+  //   budgets.reduce((acc, indBudget) => {
+  //     const thisObjAmount = indBudget.allocated_amount;
+  //     const thisObjSpent = indBudget.spent_amount;
+  //     const thisObjBalance = indBudget.remaining_balance;
+  
+  //     // Check if the categoryId exists in the accumulator
+  //     if (!acc[indBudget.categoryId]) {
+  //       acc[indBudget.categoryId] = {
+  //         category: indBudget.category,
+  //         category_description: indBudget.category.category_description,
+  //         allocated_amount: 0,  // Initialize at 0
+  //         spent_amount: 0,       // Initialize at 0
+  //         remaining_balance: 0    // Initialize at 0
+  //       };
+  //     }
+  
+  //     // Update category values
+  //     acc[indBudget.categoryId].allocated_amount += thisObjAmount;
+  //     acc[indBudget.categoryId].spent_amount += thisObjSpent;
+  //     acc[indBudget.categoryId].remaining_balance += thisObjBalance;
+  
+  //     // Update overall totals
+  //     acc.overallAllocated += thisObjAmount;
+  //     acc.overallSpent += thisObjSpent;
+  //     acc.overallRemaining += thisObjBalance;
+  
+  //     return acc;
+  
+  //   }, initialAccumulator);
+  // };
+  
   return (
     <div>
         <input 
