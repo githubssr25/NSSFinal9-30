@@ -4,6 +4,11 @@ import { getAllCategories} from "../../services/CategoryService"
 import './EditBudget.css';
 
 export const EditBudget = () => {
+
+  const apiKey = import.meta.env.VITE_API_KEY;
+  console.log(apiKey);  // Logs your API key
+  
+
   const user = JSON.parse(localStorage.getItem("NSSProject_user"));
   const customerId = user?.id; // This retrieves the customerId if the user is logged in
 
