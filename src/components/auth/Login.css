@@ -1,0 +1,11 @@
+.sign-in-button {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    width: 100%; /* Make the button take up full width */
+  }
+  
+  /* Hover effect */
+  .sign-in-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
