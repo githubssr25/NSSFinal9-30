@@ -21,6 +21,7 @@ export const NavBar = ({finishedEditing}) => {
         <li><Link to="/deleteBudget">Delete Budget</Link></li>
         <li><Link to="/productInfo">Search For Product Info From Targets Across the US To Help With Budgeting</Link></li>
         <li><Link to="/stores">Search For Nearest Target Stores</Link></li>
+        <li><Link to="/createNotifications"> Create New Notification </Link></li>
       </ul>
 
       <div className={`notification-container ${isExpanded ? 'expanded' : ''}`}>
