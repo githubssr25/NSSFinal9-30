@@ -14,9 +14,11 @@ import {LatestNotifications} from "../notifications/LatestNotifications"
 
 export const ApplicationViews = () => {
 
+const [finishedEditing, setFinishedEditing] = useState(false);
 
-
-
+const markEditingComplete = () => {
+    setFinishedEditing(true);
+  };
 
 return (
     <Routes>
@@ -24,7 +26,7 @@ return (
         path="/"
         element={
             <>
-            <NavBar />
+            <NavBar finishedEditing={finishedEditing}/>
             <Outlet />
             </>
         }
@@ -33,7 +35,7 @@ return (
             < Route path="/enterMoneySpent" element={<EnterMoneySpent />} />
             < Route path="/addNewBudget" element={<AddNewBudget/>} />
             <Route path="/deleteBudget" element={<DeleteBudget/>} />
-            <Route path="/editBudget" element={<EditBudget/>} />
+            <Route path="/editBudget" element={<EditBudget markEditingComplete={markEditingComplete}/>} />
             <Route path="/viewAllBudgets" element={<ViewAllBudgets/>} />
             <Route path="/productInfo" element={<ProductInfo />} />
             <Route path="/stores" element={<Stores />} />

@@ -3,7 +3,7 @@ import { getBudgetsByUserId, editBudget } from '../../services/BudgetService'; /
 import { getAllCategories} from "../../services/CategoryService"
 import './EditBudget.css';
 
-export const EditBudget = () => {
+export const EditBudget = ({markEditingComplete}) => {
 
   const apiKey = import.meta.env.VITE_API_KEY;
   console.log(apiKey);  // Logs your API key
@@ -143,6 +143,9 @@ const isBudgetChecked = (budget) => {
         setEditedBudget({});
 
         setCantCompleteAlert(false);  // Reset alert state after successful edit
+
+        //prop to re-render nav bar
+        markEditingComplete();
       }
     });
   };

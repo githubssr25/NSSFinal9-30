@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { LatestNotifications } from "../notifications/LatestNotifications";
 import './navbar.css';
 
-export const NavBar = () => {
+export const NavBar = ({finishedEditing}) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleNotifications = () => {
@@ -19,8 +19,8 @@ export const NavBar = () => {
         <li><Link to="/login">Log Out</Link></li>
         <li><Link to="/editBudget">Edit Budget</Link></li>
         <li><Link to="/deleteBudget">Delete Budget</Link></li>
-        <li><Link to="/productInfo">Search For Product Info</Link></li>
-        <li><Link to="/stores">Search For Stores</Link></li>
+        <li><Link to="/productInfo">Search For Product Info From Targets Across the US To Help With Budgeting</Link></li>
+        <li><Link to="/stores">Search For Nearest Target Stores</Link></li>
       </ul>
 
       <div className={`notification-container ${isExpanded ? 'expanded' : ''}`}>
