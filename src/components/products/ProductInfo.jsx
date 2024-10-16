@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { searchProducts} from "../../services/productService";
-
+import "./ProductInfo.css"; // Import CSS file
 
 
 export const ProductInfo = ({storeInfo, productString}) => {
@@ -9,22 +9,17 @@ export const ProductInfo = ({storeInfo, productString}) => {
     console.log("value of props in productInfo", storeInfo, productString);
 
 const [storeObject, setStoreObject] = useState('');
-const [productName, setProductName] = useState(productString); // Directly use prop
 const [storeId, setStoreId] = useState(parseInt(storeInfo.store_id)); // Directly use storeInfo
 const [products, setProducts] = useState([]); // Products array
 
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (productName && storeId) {
-        // Ensure storeId isn't 0 and productName exists
-        console.log("Fetching product info for:", productName, storeId);
-        await getProductInfo(productName, storeId);
-      }
-    };
-    
+useEffect(() => {
+  const fetchData = async () => {
+    if (productString && storeId) {
+      console.log("Fetching product info for:", productString, storeId);
+      await getProductInfo(productString, storeId);  // Use productString directly
+    }
+  };
     fetchData(); // Call the async function
-    
   }, [productString, storeId]); // Dependencies include productName and storeId
 
 
@@ -33,20 +28,20 @@ const [products, setProducts] = useState([]); // Products array
         console.log("Products state updated:", products);
       }, [products]);
 
-  const getProductInfo = async (productName, storeId) => {
-    console.log("in getProductInfo what is productName and storeId", productName, storeId);
-    
-    const productResponse = await searchProducts(productName, parseInt(storeId)); // Await the result
-    console.log("what is productResponse", productResponse);
-    setProducts(productResponse); // Set products state after data is fetched
-  };
+      const getProductInfo = async (searchQuery, storeId) => {
+        console.log("In getProductInfo, query and storeId:", searchQuery, storeId);
+        
+        const productResponse = await searchProducts(searchQuery, storeId);
+        console.log("Product response:", productResponse);
+        setProducts(productResponse);  // Update products with fetched data
+      };
     
 
 // const getProductInfo = async (productName, storeId) => {
 //     console.log("in getProductInfo what is productNae and storeId", productName, storeId)
-//     // IF YOU HAPPENED TO CALL THIS WHEN DOING ON CHANGE FOR STORE NAME THEN THIS IS EVENT.TARGET.VALUE YOU WOULDG ET
-//     // console.log("ID: ", event.target.id);    // Logs: st0re_name
-//     // console.log("Value: ", event.target.value); // Logs: the value typed in by the user
+//     IF YOU HAPPENED TO CALL THIS WHEN DOING ON CHANGE FOR STORE NAME THEN THIS IS EVENT.TARGET.VALUE YOU WOULDG ET
+//     console.log("ID: ", event.target.id);    // Logs: st0re_name
+//     console.log("Value: ", event.target.value); // Logs: the value typed in by the user
 //     searchProducts(productName, parseInt(storeId)).then((productResponse) => {
 //         console.log("what is productResponse", productResponse);
 //         setProducts(productResponse);
@@ -54,42 +49,25 @@ const [products, setProducts] = useState([]); // Products array
 // }
 
 return (
-
-    <>
-    <article>
-       
-      {products && products.length > 0 && (
-        <section className="product-results">
-          <h3>Product Results</h3>
+  <article className="product-container">
+    {products.length > 0 ? (
+      <section className="product-results">
+        <h3 className="results-heading">Product Results</h3>
+        <div className="product-grid">
           {products.map((product, index) => (
-            <article key={index} className="product-item">
-              <header>
-                <h4>{product.name}</h4>
-                <span>Price: {product.price}</span>
-              </header>
-              <section className="product-details">
-                <p>tcin of product: {product.tcin}</p>
-                <p>Rating: {product.rating}</p>
-                <p>Type Of Item: {product.typeOfItem}</p>
-                <p>Item Name: {product.itemName}</p>
-                <p>Price: {product.price}</p>
-                <p>Rating: {product.rating}</p>
-              </section>
-            </article>
+            <div key={product.tcin} className="product-card">
+              <h4 className="product-title">{product.itemName}</h4>
+              <p><strong>Price:</strong> ${product.price}</p>
+              <p><strong>Rating:</strong> {product.rating}</p>
+              <p><strong>Item Type:</strong> {product.typeOfItem}</p>
+              <p><strong>TCIN:</strong> {product.tcin}</p>
+            </div>
           ))}
-        </section>
-      )}
-
-    </article>
-    </>
-
-
-
-
-)
-
-
-
-
-
-}
+        </div>
+      </section>
+    ) : (
+      <p className="no-results">No products found. Try a different search!</p>
+    )}
+  </article>
+);
+};

@@ -1,7 +1,7 @@
 const apiKey = import.meta.env.VITE_API_KEY; // Ensure the API key is correct
 
 export const fetchNearbyStores = async (zipCode) => {
-  const url = `/api/nearby_stores?place=${zipCode}&limit=1`; // Use 'place' and 'limit' as in the curl
+  const url = `https://target-com-shopping-api.p.rapidapi.com/nearby_stores?limit=1&place=${zipCode}`;
 
   try {
     const response = await fetch(url, {

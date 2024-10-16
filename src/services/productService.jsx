@@ -2,7 +2,9 @@ const apiKey = import.meta.env.VITE_API_KEY; // Ensure API key is loaded from .e
 
 export const searchProducts = async (keyword, storeId, count = 25) => {
   const formattedKeyword = keyword.replace(/\s/g, '%20'); // Manually replace spaces
-  const url = `/api/product_search?store_id=${storeId}&keyword=${formattedKeyword}&count=${count}`;
+  console.log("within searchProducts what is value of keyword before we search", keyword, formattedKeyword);
+  const url = `https://target-com-shopping-api.p.rapidapi.com/product_search?store_id=${storeId}&keyword=${formattedKeyword}&count=${count}`;
+
 
   try {
     const response = await fetch(url, {
@@ -21,7 +23,7 @@ export const searchProducts = async (keyword, storeId, count = 25) => {
 
     const resp = await response.json();
 
-    console.log("whati s resp right as we get it back for searchProducts", resp);
+    console.log("whati s resp right as we get it back for searchProducts and what was formattedKeyword", resp, formattedKeyword);
     
     // Extract price, location_id, and average rating for each product
 
