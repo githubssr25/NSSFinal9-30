@@ -118,17 +118,20 @@ return (
         ))}
       </select>
 
-      {/* Conditional Inputs */}
-      {notificationTypeId === "1" && (
-        <>
-          <label>Due Date</label>
+      <>
+      <label>Due Date</label>
           <input
             type="date"
             id="dueDate"
             onChange={handleInputChange}
             required
           />
+      </>
 
+
+      {/* Conditional Inputs */}
+      {notificationTypeId === "1" && (
+        <>
           <label>Days Before Due</label>
           <input
             type="number"
