@@ -1,0 +1,534 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "password": "password1"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "password": "password2"
+    },
+    {
+      "id": 3,
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "password": "password3"
+    },
+    {
+      "id": 4,
+      "name": "Bob Williams",
+      "email": "bob.williams@example.com",
+      "password": "password4"
+    }
+  ],
+  "budgets": [
+    {
+      "id": 1,
+      "userId": 1,
+      "categoryId": 1,
+      "allocated_amount": 500,
+      "spent_amount": 450,
+      "remaining_balance": 50,
+      "days_left": 5,
+      "budget_name": "Groceries for October",
+      "isSavingsGoal": false,
+      "savingsValue": null,
+      "due_date": "2024-11-01",
+      "date_created": "2024-09-22"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "categoryId": 2,
+      "allocated_amount": 1200,
+      "spent_amount": 1200,
+      "remaining_balance": 0,
+      "days_left": 0,
+      "budget_name": "Rent for October",
+      "isSavingsGoal": false,
+      "savingsValue": null,
+      "due_date": "2024-10-31",
+      "date_created": "2024-09-25"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "categoryId": 3,
+      "allocated_amount": 400,
+      "spent_amount": 350,
+      "remaining_balance": 50,
+      "days_left": 10,
+      "budget_name": "Utilities for October",
+      "isSavingsGoal": false,
+      "savingsValue": null,
+      "due_date": "2024-10-15",
+      "date_created": "2024-09-23"
+    },
+    {
+      "id": 4,
+      "userId": 3,
+      "categoryId": 4,
+      "allocated_amount": 250,
+      "spent_amount": 245,
+      "remaining_balance": 5,
+      "days_left": 2,
+      "budget_name": "Commute Budget for October",
+      "isSavingsGoal": false,
+      "savingsValue": null,
+      "due_date": "2024-10-10",
+      "date_created": "2024-09-24"
+    },
+    {
+      "id": 5,
+      "userId": 22,
+      "categoryId": 5,
+      "allocated_amount": 1000,
+      "spent_amount": 500,
+      "remaining_balance": 500,
+      "days_left": 30,
+      "budget_name": "New Car Savings Goal",
+      "isSavingsGoal": true,
+      "savingsValue": 200,
+      "due_date": "2024-11-20",
+      "date_created": "2024-09-20"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "categoryId": 6,
+      "allocated_amount": "780",
+      "spent_amount": 400,
+      "remaining_balance": 400,
+      "days_left": 15,
+      "budget_name": "Dining Out for October"
+    },
+    {
+      "id": 7,
+      "userId": 3,
+      "categoryId": 7,
+      "allocated_amount": 600,
+      "spent_amount": 450,
+      "remaining_balance": 150,
+      "days_left": 20,
+      "budget_name": "Health Expenses",
+      "isSavingsGoal": false,
+      "savingsValue": null,
+      "due_date": "2024-11-05",
+      "date_created": "2024-09-27"
+    },
+    {
+      "id": 8,
+      "userId": 4,
+      "categoryId": 8,
+      "allocated_amount": 2000,
+      "spent_amount": 1900,
+      "remaining_balance": 100,
+      "days_left": 10,
+      "budget_name": "Vacation Savings",
+      "isSavingsGoal": true,
+      "savingsValue": 300,
+      "due_date": "2024-11-10",
+      "date_created": "2024-09-28"
+    },
+    {
+      "id": 9,
+      "userId": 5,
+      "categoryId": 9,
+      "allocated_amount": 150,
+      "spent_amount": 140,
+      "remaining_balance": 10,
+      "days_left": 7,
+      "budget_name": "Clothing for October",
+      "isSavingsGoal": false,
+      "savingsValue": null,
+      "due_date": "2024-10-17",
+      "date_created": "2024-09-29"
+    },
+    {
+      "id": 10,
+      "userId": 6,
+      "categoryId": 10,
+      "allocated_amount": 500,
+      "spent_amount": 300,
+      "remaining_balance": 200,
+      "days_left": 10,
+      "budget_name": "Subscriptions for October",
+      "isSavingsGoal": false,
+      "savingsValue": null,
+      "due_date": "2024-10-20",
+      "date_created": "2024-09-30"
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "categoryId": 1,
+      "allocated_amount": 300,
+      "spent_amount": 280,
+      "remaining_balance": 20,
+      "days_left": 2,
+      "budget_name": "Groceries for Mid-October",
+      "isSavingsGoal": false,
+      "savingsValue": null,
+      "due_date": "2024-10-16",
+      "date_created": "2024-09-21"
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "categoryId": 5,
+      "allocated_amount": 500,
+      "spent_amount": 260,
+      "remaining_balance": 240,
+      "days_left": 15,
+      "budget_name": "Groceries for Mid-October",
+      "isSavingsGoal": false,
+      "savingsValue": null,
+      "due_date": "2024-10-29",
+      "date_created": "2024-09-21"
+    },
+    {
+      "id": 13,
+      "userId": 1,
+      "categoryId": 8,
+      "allocated_amount": 200,
+      "spent_amount": 135,
+      "remaining_balance": 65,
+      "days_left": 14,
+      "budget_name": "Holiday Savings Goal",
+      "isSavingsGoal": true,
+      "savingsValue": 200,
+      "due_date": "2024-10-30",
+      "date_created": "2024-10-01"
+    },
+    {
+      "id": 14,
+      "userId": 1,
+      "categoryId": 6,
+      "allocated_amount": 1000,
+      "spent_amount": 950,
+      "remaining_balance": 50,
+      "days_left": 15,
+      "budget_name": "Dining Out for November",
+      "isSavingsGoal": false,
+      "savingsValue": null,
+      "due_date": "2024-11-01",
+      "date_created": "2024-10-01"
+    },
+    {
+      "id": 15,
+      "userId": 1,
+      "categoryId": 10,
+      "allocated_amount": 400,
+      "spent_amount": 400,
+      "remaining_balance": 0,
+      "days_left": 0,
+      "budget_name": "Streaming Subscriptions",
+      "isSavingsGoal": false,
+      "savingsValue": null,
+      "due_date": "2024-10-14",
+      "date_created": "2024-10-01"
+    }
+  ],
+  "notification_types": [
+    {
+      "id": 1,
+      "type_name": "Due Date Reminder",
+      "description": "Reminder for upcoming payment due dates."
+    },
+    {
+      "id": 2,
+      "type_name": "Low Balance Alert",
+      "description": "Notification when the balance on a budget is low."
+    },
+    {
+      "id": 3,
+      "type_name": "Exceeding Average Spending Alert",
+      "description": "Notify when spending is faster than the daily average for a budget."
+    },
+    {
+      "id": 4,
+      "type_name": "Over Budget Alert",
+      "description": "Notification when a budget is exceeded."
+    },
+    {
+      "id": 5,
+      "type_name": "Goal Progress Alert",
+      "description": "Notify when a user reaches 50%, 75%, or 100% of a savings goal."
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "category_description": "Groceries"
+    },
+    {
+      "id": 2,
+      "category_description": "Rent"
+    },
+    {
+      "id": 3,
+      "category_description": "Utilities"
+    },
+    {
+      "id": 4,
+      "category_description": "Transportation"
+    },
+    {
+      "id": 5,
+      "category_description": "Entertainment"
+    },
+    {
+      "id": 6,
+      "category_description": "Dining Out"
+    },
+    {
+      "id": 7,
+      "category_description": "Health"
+    },
+    {
+      "id": 8,
+      "category_description": "Savings"
+    },
+    {
+      "id": 9,
+      "category_description": "Clothing"
+    },
+    {
+      "id": 10,
+      "category_description": "Subscriptions"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "userId": 1,
+      "message": "Your rent payment is due in 3 days.",
+      "notification_type_id": 1,
+      "balanceThreshold": null,
+      "days_before_due": 3,
+      "due_date": "2024-11-01",
+      "progress": null,
+      "budgetId": 2,
+      "notification_date": "2024-10-05",
+      "is_read": false,
+      "checkAverageSpending": false,
+      "dateReminder": true,
+      "isSavingsGoal": false
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "message": "You have exceeded your rent budget.",
+      "notification_type_id": 3,
+      "balanceThreshold": null,
+      "days_before_due": null,
+      "due_date": "2024-10-31",
+      "progress": null,
+      "budgetId": 2,
+      "notification_date": "2024-10-01",
+      "is_read": false,
+      "checkAverageSpending": false,
+      "dateReminder": false,
+      "isSavingsGoal": false
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "message": "Your utilities payment is due tomorrow.",
+      "notification_type_id": 1,
+      "balanceThreshold": null,
+      "days_before_due": 1,
+      "due_date": "2024-10-15",
+      "progress": null,
+      "budgetId": 3,
+      "notification_date": "2024-10-07",
+      "is_read": false,
+      "checkAverageSpending": false,
+      "dateReminder": true,
+      "isSavingsGoal": false
+    },
+    {
+      "id": 4,
+      "userId": 3,
+      "message": "Your commute budget is down to 5% remaining.",
+      "notification_type_id": 2,
+      "balanceThreshold": 5,
+      "days_before_due": null,
+      "due_date": "2024-10-10",
+      "progress": null,
+      "budgetId": 4,
+      "notification_date": "2024-10-06",
+      "is_read": true,
+      "checkAverageSpending": false,
+      "dateReminder": false,
+      "isSavingsGoal": false
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "message": "You have reached 50% of your savings goal for the new car.",
+      "notification_type_id": 4,
+      "balanceThreshold": null,
+      "days_before_due": null,
+      "due_date": "2024-11-20",
+      "progress": 50,
+      "budgetId": 5,
+      "notification_date": "2024-10-13",
+      "is_read": false,
+      "checkAverageSpending": false,
+      "dateReminder": false,
+      "isSavingsGoal": true
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "message": "You are exceeding the average daily spend on your groceries budget.",
+      "notification_type_id": 5,
+      "balanceThreshold": null,
+      "days_before_due": null,
+      "due_date": "2024-11-01",
+      "progress": null,
+      "budgetId": 1,
+      "notification_date": "2024-10-10",
+      "is_read": false,
+      "checkAverageSpending": true,
+      "dateReminder": false,
+      "isSavingsGoal": false
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "message": "Your Groceries for Mid-October budget has only $20 remaining.",
+      "notification_type_id": 2,
+      "balanceThreshold": 10,
+      "days_before_due": null,
+      "due_date": "2024-10-16",
+      "progress": null,
+      "budgetId": 11,
+      "notification_date": "2024-10-15",
+      "is_read": false,
+      "checkAverageSpending": false,
+      "dateReminder": false,
+      "isSavingsGoal": false
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "message": "You have spent 50% of your Entertainment Budget.",
+      "notification_type_id": 3,
+      "balanceThreshold": 50,
+      "days_before_due": null,
+      "due_date": "2024-10-30",
+      "progress": null,
+      "budgetId": 12,
+      "notification_date": "2024-10-01",
+      "is_read": false,
+      "checkAverageSpending": false,
+      "dateReminder": false,
+      "isSavingsGoal": false
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "message": "You are not on track to reach your Holiday Savings Goal. 16 days in, you have already spent $135, but your goal was to save $200 over 30 days.",
+      "notification_type_id": 4,
+      "balanceThreshold": null,
+      "days_before_due": 14,
+      "due_date": "2024-10-30",
+      "progress": 32.5,
+      "budgetId": 13,
+      "notification_date": "2024-10-12",
+      "is_read": false,
+      "checkAverageSpending": true,
+      "dateReminder": false,
+      "isSavingsGoal": true
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "message": "You are close to exceeding your Dining Out budget for November.",
+      "notification_type_id": 2,
+      "balanceThreshold": 90,
+      "days_before_due": 5,
+      "due_date": "2024-11-01",
+      "progress": null,
+      "budgetId": 14,
+      "notification_date": "2024-10-20",
+      "is_read": false,
+      "checkAverageSpending": true,
+      "dateReminder": false,
+      "isSavingsGoal": false
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "message": "Your Streaming Subscriptions budget has reached $0 remaining.",
+      "notification_type_id": 3,
+      "balanceThreshold": null,
+      "days_before_due": 0,
+      "due_date": "2024-10-14",
+      "progress": null,
+      "budgetId": 15,
+      "notification_date": "2024-10-14",
+      "is_read": true,
+      "checkAverageSpending": false,
+      "dateReminder": false,
+      "isSavingsGoal": false
+    },
+    {
+      "message": "you only have 15% of your budget balance for the month left",
+      "balanceThreshold": "15",
+      "daysBeforeDue": null,
+      "dueDate": "",
+      "checkAverageSpending": false,
+      "progress": null,
+      "userId": 1,
+      "budgetId": "13",
+      "notification_type_id": 2,
+      "is_read": false,
+      "id": 12
+    }
+  ],
+  "saved_products": [
+    {
+      "id": 1,
+      "userId": 1,
+      "product_name": "Milk",
+      "store_name": "Woolworths",
+      "current_price": 3.5,
+      "currency": "ZAR",
+      "price_date": "2024-10-07"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "product_name": "Bread",
+      "store_name": "London Grocer",
+      "current_price": 1.75,
+      "currency": "USD",
+      "price_date": "2024-10-07"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "product_name": "Eggs",
+      "store_name": "Spar",
+      "current_price": 2.2,
+      "currency": "ZAR",
+      "price_date": "2024-10-07"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "product_name": "Cheese",
+      "store_name": "Woolworths",
+      "current_price": 5,
+      "currency": "ZAR",
+      "price_date": "2024-10-07"
+    }
+  ]
+}

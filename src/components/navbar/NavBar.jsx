@@ -1,7 +1,12 @@
+import React from 'react'; // Add this line
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { LatestNotifications } from "../notifications/LatestNotifications";
 import './navbar.css';
+
+/**
+ * @type {import('react').FC<{ finishedEditing: boolean }>}
+ */
 
 export const NavBar = ({finishedEditing}) => {
   const [isExpanded, setIsExpanded] = useState(false);
