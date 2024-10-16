@@ -11,6 +11,7 @@ import {ProductInfo} from "../products/ProductInfo"
 import {Stores} from "../stores/Stores"
 import {LatestNotifications} from "../notifications/LatestNotifications"
 import {CreateNotifications} from "../notifications/CreateNotifications"
+import {DeleteNotifications} from "../notifications/DeleteNotifications"
 //the parent route is / because its route only closes at the end everything within it is a child of it like welcome etc
 
 export const ApplicationViews = () => {
@@ -42,6 +43,7 @@ return (
             <Route path="/stores" element={<Stores />} />
             <Route path="/latestNotifications" element={<LatestNotifications />} />
             <Route path="/createNotifications" element={<CreateNotifications />} />
+            <Route path="/deleteNotification" element={<DeleteNotifications />}/>
     </Route>
     </Routes>
 );

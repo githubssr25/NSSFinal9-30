@@ -33,4 +33,14 @@ export const editNotification = async (notification) => {
         },
         body: JSON.stringify(notification),
     }).then((res) => res.json());
-}
+};
+
+export const deleteNotification = async (notificationId) => {
+    const response = await fetch(`http://localhost:8088/notifications/${notificationId}`, {
+        method: "DELETE"
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to delete notification");
+    }
+};
