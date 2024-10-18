@@ -105,16 +105,73 @@ section {
   border-bottom: 1px solid #ccc;
 }
 
-/* Make select dropdown options smaller for smaller screens */
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
-  select {
-    width: 50%; /* Ensure the select field is 100% width */
-    font-size: 0.9rem; /* Reduce font size */
+  .enter-money-section {
+    padding: 10px;
+    max-width: 100%; /* Ensure it uses full width */
+    max-width: 220px;
   }
 
-  /* Reduce padding and font size for the dropdown options */
+  .select-budget-container {
+    margin: 10px auto;
+    max-width: 340px; /* Limit the max width */
+  }
+
+  select {
+    width: 100%; /* Make select field fill the width */
+    font-size: 0.85rem; /* Adjust font size */
+    padding: 8px;
+    margin-top: 5px;
+  }
+
   select option {
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Reduce option font size */
     padding: 5px;
+  }
+
+  .enter-money-container {
+    margin: 10px auto;
+    max-width: 240px; /* Limit max width for input section */
+  }
+
+  .enter-money-container h2 {
+    font-size: 1rem; /* Adjust heading size */
+    margin-bottom: 8px;
+  }
+
+  .enter-money-container input {
+    width: 100%; /* Full width input */
+    padding: 10px;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    width: 100%; /* Full-width button */
+    padding: 10px;
+    font-size: 0.85rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Modal Adjustments */
+  .modal-body p {
+    font-size: 0.85rem; /* Ensure smaller text in modal */
+  }
+
+  .modal-footer button {
+    font-size: 0.85rem;
+    padding: 8px;
+    width: 100%; /* Full-width close button */
   }
 }

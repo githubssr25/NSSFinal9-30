@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "./AddNewBudget.css"; 
 
 // Assuming you have a function to create a new budget and fetch categories
@@ -11,7 +10,7 @@ export const AddNewBudget = () => {
     const customerId = user?.id; // This retrieves the customerId if the user is logged in
 
     const [categories, setCategories] = useState([]);  // Categories for the dropdown
-    const navigate = useNavigate();  // Hook to navigate after adding budget
+    // const navigate = useNavigate();  // Hook to navigate after adding budget
     const [newBudget, setNewBudget] = useState({});
     const [successfulCreation, setSuccessfulCreation] = useState(false);
     const [selectedCategoryId, setSelectedCategoryId] = useState("");  // State to hold selected category ID

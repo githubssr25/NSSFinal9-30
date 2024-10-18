@@ -1,118 +1,71 @@
+/* Base styles for the main container */
 main {
-  margin: 20px;
-  padding: 20px;
+  margin: 0 auto;           /* Center the main container */
+  padding: 8px;            /* Use light padding */
   background-color: #f2f2f2;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 420px;         /* Slightly smaller max-width */
+  width: 100%;              /* Ensure it fills the screen width */
+  box-sizing: border-box;   /* Include padding and border in width */
 }
 
-
-/* Responsive styles for smaller screens (e.g., mobile phones) */
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   main {
-    padding: 10px;
-    margin: 10px;
-    max-width: 70%;  /* Ensure the main container adapts to the full width on small screens */
-    width: 10;       /* Force full width coverage */
+    padding: 5px;          /* Lighter padding on small screens */
+    max-width: 95%;        /* Maximize the use of available screen space */
+    max-width: 220px;
   }
 
-  /* Adjust font size, padding, and margins to fit on smaller screens */
   h2 {
-    font-size: 1.5rem;  /* Smaller font size for headings on mobile */
+    font-size: 1.1rem;     /* Adjust heading size for mobile */
+    margin-bottom: 5px;
   }
 
-
-  /* Ensure the flex container stacks items vertically */
-  .flex-form, .allocatedAndBudgetName, .daysLeft {
+  form {
+    display: flex;
     flex-direction: column;
-    width: 50%;
-    padding: 10px;
+    gap: 5px;              /* Reduce the gap between elements */
   }
 
-}
+  
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;             /* Full width */
+    padding: 6px;            /* Reduce padding */
+    margin: 2px 0;           /* Minimal margin */
+    box-sizing: border-box;
+    font-size: 0.9rem;       /* Smaller font size */
+  }
 
+    select {
+    height: 40px;             /* Control dropdown height for mobile */
+    font-size: 0.85rem;       /* Adjust font size to fit screen */
+    padding: 4px;             /* Less padding to prevent overflow */
+  }
 
-/* Heading styles */
-h2 {
-  font-size: 1.8rem;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
+  option {
+    font-size: 0.8rem;        /* Ensure smaller font for dropdown options */
+    padding: 8px;             /* Compact options */
+  }
 
-/* Form styles */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;  /* Add gap for consistent spacing */
-}
+  .flex-form, 
+  .allocatedAndBudgetName, 
+  .daysLeft {
+    display: flex;
+    flex-direction: column;  /* Stack elements vertically */
+    align-items: stretch;    /* Stretch to fill the available width */
+    gap: 5px;
+    padding: 0;              /* Remove excess padding */
+    width: 100%;             /* Ensure it uses full width */
+  }
 
-/* Input and select field styling */
-input[type="text"],
-input[type="number"],
-select {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 100%;  /* Full width on small screens */
-  box-sizing: border-box;  /* Ensure padding and border are included in the width */
-}
-
-/* Fieldset styling for grouping inputs */
-fieldset {
-  margin-bottom: 20px;
-  border: none;  /* Remove fieldset border */
-}
-
-/* Button styling */
-button {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #218838;
-}
-
-
-/* Flexbox form styling */
-.flex-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.allocatedAndBudgetName {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 20px;
-  padding: 20px;
-}
-
-.daysLeft {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 20px;
-}
-
-.daysLeft input {
-  flex-grow: 1;
-  min-width: 150px;
-  padding: 10px;
-  font-size: 1rem;
+  button {
+    font-size: 0.9rem;       /* Smaller font size */
+    padding: 8px;
+    width: 100%;             /* Full-width buttons */
+    margin-top: 5px;
+  }
 }

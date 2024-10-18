@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Modal, Button } from "react-bootstrap";
+import { Modal} from "react-bootstrap";
 import { getBudgetsByUserId, enterMoneySpentForBudget  } from "../../services/BudgetService"; // Adjust path as needed
 import "./EnterMoneySpent.css"; // Import the CSS file
 
@@ -75,32 +74,37 @@ export const  EnterMoneySpent = () => {
   //              Category: {eachBudget.category ? eachBudget.category.category_description : 'Unknown'}
 
   return (
-    <section>
-      <label> Choose your Budget you want to add money to </label>
-      <select id="your-budgets" onChange={(e) => handleBudgetChange(e)}>
-        <option value=""> Select a Budget </option>
-        {yourBudgets.map((eachBudget) => {
-          return (
+    <section className="enter-money-section">
+      {/* Select Budget Section */}
+      <div className="select-budget-container">
+        <label>Choose your Budget you want to add money to</label>
+        <select id="your-budgets" onChange={(e) => handleBudgetChange(e)}>
+          <option value="">Select a Budget</option>
+          {yourBudgets.map((eachBudget) => (
             <option key={eachBudget.id} value={eachBudget.id}>
-              Budget Name: {eachBudget.budget_name}
-              Allocated Amount: {eachBudget.allocated_amount}
-              Spent Amount: {eachBudget.spent_amount}
-              Remaining Balance: {eachBudget.remaining_balance}
-              Days Left: {eachBudget.days_left}
+              Budget Name: {eachBudget.budget_name} | Allocated Amount:{" "}
+              {eachBudget.allocated_amount} | Spent Amount:{" "}
+              {eachBudget.spent_amount} | Remaining Balance:{" "}
+              {eachBudget.remaining_balance} | Days Left:{" "}
+              {eachBudget.days_left}
             </option>
-          );
-        })}
-      </select>
-      <article>
-        <h2> Enter Money Spent for this Header </h2>
+          ))}
+        </select>
+      </div>
+  
+      {/* Enter Money Spent Section */}
+      <article className="enter-money-container">
+        <h2>Enter Money Spent for this Budget</h2>
         <input
           type="number"
           id="spent_amount"
-          placeholder="Enter An Amount of Money You Have Spent For This Budget To Update It"
+          placeholder="Enter amount of money spent"
           value={enteredMoneySpent}
           onChange={(e) => setEnteredMoneySpent(e.target.value)}
         />
       </article>
+  
+      {/* Submit Button */}
       <button
         type="button"
         onClick={(e) => {
@@ -110,13 +114,20 @@ export const  EnterMoneySpent = () => {
       >
         Submit Budget With Updated Money Added To It
       </button>
-
+  
+      {/* Success Modal */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Money Added Successfully</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>you have added {enteredMoneySpent} dollars to amount spent in your budget. {newBudget.spent_amount} is your new spent amount on your budget named {newBudget.budget_name} you now have {newBudget.remaining_balance} left over the {newBudget.days_left} days </p>
+          <p>
+            You have added {enteredMoneySpent} dollars to your budget. Your new
+            spent amount is {newBudget.spent_amount} for the budget named{" "}
+            {newBudget.budget_name}. You now have{" "}
+            {newBudget.remaining_balance} left over the next{" "}
+            {newBudget.days_left} days.
+          </p>
         </Modal.Body>
         <Modal.Footer>
           <button onClick={handleCloseModal}>Close</button>
@@ -124,4 +135,5 @@ export const  EnterMoneySpent = () => {
       </Modal>
     </section>
   );
+  
 }

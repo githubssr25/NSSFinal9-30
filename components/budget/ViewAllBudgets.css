@@ -162,9 +162,10 @@ fieldset {
   /* Responsive styles */
   @media (max-width: 768px) {
     input, select, button {
+      font-size: 0.85rem;
       width: 100%;
     }
-  }
+  
   /*
   overflow-x: auto: This ensures that if the table is too wide to fit on smaller screens, the user can scroll
    horizontally to see the hidden content. Without this property, parts of the table might be cut off or 
@@ -174,6 +175,12 @@ Changing display: block breaks this rigid structure, allowing more flexibility.
 This means the table will behave more like a div or block element and wrap to fit smaller screens if necessary. 
 When you make a table block, each row or column can adapt more flexibly to fit the screen.
  */
+
+ input[type="text"] {
+  width: 95%;    /* Full width */
+  font-size: 0.85rem;  /* Smaller input text */
+  padding: 4px;  /* Less padding */
+}
 
   thead {
     display: none; /* Hide table headers on mobile to simplify display */
@@ -216,6 +223,22 @@ This results in each table row becoming more like a "card," with each cell showi
     margin-bottom: 10px;
     display: block; /* Make each row a block element */
   }
+/* H1 Styling */
+
+.heading-container {
+  max-width: 250px;    /* Narrower for mobile */
+  margin: 10px auto;   /* Less margin */
+  padding: 5px;        /* Smaller padding */
+}
+
+.heading-container h1 {
+  font-size: 1rem;     /* Smaller heading size */
+  margin-bottom: 5px;  /* Reduce spacing */
+  line-height: 1.1;    /* Compact line height */
+  word-break: break-word; /* Ensure words don't overflow */
+  letter-spacing: 0.5px; /* Maintain readability */
+}
+
 }
 /*
 margin-bottom: 10px: Adds space between each "row" (which is now displayed as a block). 
@@ -224,17 +247,6 @@ display: block: Ensures each row (tr) becomes a block element.
  This helps stack each row vertically, essentially turning the table into a list-like structure for mobile views.
 */
 
-/* Styling for the no budgets found message */
-p {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #777;
-}
 
-/* H1 Styling */
-h1 {
-  text-align: center;
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 20px;
+
 }

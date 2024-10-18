@@ -58,6 +58,23 @@ div {
     tbody td {
       padding: 8px;
     }
+
+    /* H1 Styling */
+
+.heading-container {
+  max-width: 250px;    /* Narrower for mobile */
+  margin: 10px auto;   /* Less margin */
+  padding: 5px;        /* Smaller padding */
+}
+
+.heading-container h1 {
+  font-size: 1rem;     /* Smaller heading size */
+  margin-bottom: 5px;  /* Reduce spacing */
+  line-height: 1.1;    /* Compact line height */
+  word-break: break-word; /* Ensure words don't overflow */
+  letter-spacing: 0.5px; /* Maintain readability */
+}
+
   }
   
   /* H1 Styling */

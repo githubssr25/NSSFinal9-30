@@ -85,34 +85,142 @@ div label:hover {
 }
 
 /* Responsive styles */
+/* Responsive styles */
+/* Responsive styles */
 @media (max-width: 768px) {
-  h1, h2 {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+
+  /* Header Container */
+  .header-container {
+    max-width: 220px; /* Constrain header width */
+    margin: 0 auto;
+    text-align: center;
   }
 
-  input, select, button {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
-    padding: 8px;      /* Adjust padding */
-    width: 100%;       /* Full width for form elements */
+  .header-container h1 {
+    font-size: 0.8rem;  /* Smaller font size */
+    line-height: 1.1;
+    margin-bottom: 4px;
+    word-break: break-word;  /* Prevent overflow */
   }
 
-  ul {
+  /* Dropdown Container */
+  .dropdown-container {
+    width: 100%; 
+    max-width: 280px; /* Restrict width */
+    margin: 0 auto 10px;
+  }
+
+  .dropdown-container select {
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 6px;
+  }
+
+  /* Budgets List */
+  .budgets-list-container {
+    max-width: 220px; /* Constrain width */
+    margin: 10px auto;
     padding: 0;
   }
 
-  li {
-    font-size: 0.9rem; /* Smaller font size for better fit */
-    margin: 5px 0;
-  }
-
-  div label {
+  .budget-item {
     padding: 8px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
   }
 
-  /* Adjust list styling for mobile */
-  ul li::before {
-    content: attr(data-label);
-    font-weight: bold;
-    margin-right: 5px;
+  .budget-item label {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  /* Budget Details */
+  .budget-details {
+    max-width: 220px;  /* Ensure details are constrained */
+    margin: 8px auto;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+
+  .budget-details h2 {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+  }
+
+  .budget-details ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .budget-details li {
+    font-size: 0.8rem;
+    margin: 4px 0;
+  }
+
+  /* Form Container */
+  .edit-form-container {
+    max-width: 220px; /* Constrain the form width */
+    margin: 15px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+
+  .edit-form-container label {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .edit-form-container input,
+  .edit-form-container select {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 6px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  .edit-form-container button {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.85rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .edit-form-container button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Success and Alert Messages */
+  .success-message {
+    max-width: 220px;
+    margin: 5px auto;
+    padding: 8px;
+    background-color: #e6ffe6;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .alert-message {
+    max-width: 220px;
+    margin: 5px auto;
+    padding: 8px;
+    color: red;
+    background-color: #ffe6e6;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-align: center;
   }
 }

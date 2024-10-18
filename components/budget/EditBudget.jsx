@@ -145,131 +145,133 @@ const isBudgetChecked = (budget) => {
 
   return (
     <>
+         {/* Header Section */}
+    <div className="header-container">
       <h1>Budgets Available for Editing</h1>
-      <h1>To View the Full Details of Any Budget Click the Check Box Next To It</h1>
+      <h1>To View the Full Details of Any Budget, Click the Check Box Next to It</h1>
+    </div>
 
-      {/* Select Budget Dropdown */}
+    {/* Dropdown to Select a Budget */}
+    <div className="dropdown-container">
       <select id="myBudget" onChange={(e) => chosenBudget(e)}>
-        <option value=""> Select a Budget </option>
+        <option value="">Select a Budget</option>
         {budgets.map((eachBudget) => (
           <option key={eachBudget.id} value={eachBudget.id}>
-            {eachBudget.budget_name} - Remaining Balance:{" "}
-            {eachBudget.remaining_balance}
+            {eachBudget.budget_name} - Remaining Balance: {eachBudget.remaining_balance}
           </option>
         ))}
       </select>
+    </div>
 
+    {/* Budgets List Section */}
 
+      <div className="budgets-list-container">
+      {budgets.map((budget) => {
+        // Move the logic outside JSX
+        const isChecked = isBudgetChecked(budget); // Check if this budget is in the checked list
+        return (
+          <div key={budget.id}>
+            <label>
+              <input
+                type="checkbox"
+                name="budget_name"
+                value={budget.id} // Add this so that you get the budget ID in handleCheckboxChange When a user clicks on a checkbox, it sends a change event to the onChange handler (handleCheckboxChange in this case). By setting the value attribute on the checkbox (value={budget.id}), you're associating each checkbox with a specific budget.id.
+                checked={isBudgetChecked(budget)} // Whether this specific checkbox is checked THIS ONLY CONTROLS VISUALLY IF THE BOX IS CHECKED NOT THE LOGIC OF DISPLAYING IF CHECKED ITS JUST A VISUAL
+                onChange={handleCheckboxChange}
+              />
+              Budget Name {budget.budget_name}
+            </label>
 
+            {/* Conditionally display budget details */}
+            {isChecked && (
+              <div className="budget-details">
+                <h2>Budget Details for {budget.budget_name}</h2>
+                <ul>
+                  <li>Budget Name: {budget.budget_name}</li>
+                  <li>Category: {budget.category?.category_description || "Unknown"}</li>
+                  <li>Allocated Amount: {budget.allocated_amount}</li>
+                  <li>Spent Amount: {budget.spent_amount}</li>
+                  <li>Remaining Balance: {budget.remaining_balance}</li>
+                  <li>Days Left: {budget.days_left}</li>
+                </ul>
+              </div>
+            )}
+          </div>
+        );
+      })}
+      </div>
 
-   {/* Display Information for All Budgets */}
+  
+    {/* Edit Budget Form */}
+    {selectedBudget && (
+      <fieldset className="edit-form-container">
+        <h1>Edit Budget Form</h1>
+        <article>
+          <label>Budget Name</label>
+          <input
+            type="text"
+            id="budget_name"
+            value={editedBudget.budget_name || ""}
+            onChange={updateBudget}
+          />
 
-   {budgets.map((budget) => {
-      // Move the logic outside JSX
-      const isChecked = isBudgetChecked(budget); // Check if this budget is in the checked list
-      return (
-        <div key={budget.id}>
-          <label>
-            <input 
-              type="checkbox"
-              name="budget_name"
-            value={budget.id}  // Add this so that you get the budget ID in handleCheckboxChange When a user clicks on a checkbox, it sends a change event to the onChange handler (handleCheckboxChange in this case). By setting the value attribute on the checkbox (value={budget.id}), you're associating each checkbox with a specific budget.id.
-            checked={isBudgetChecked(budget)}  // Whether this specific checkbox is checked THIS ONLY CONTROLS VISUALLY IF THE BOX IS CHECKED NOT THE LOGIC OF DISPLAYING IF CHECKED ITS JUST A VISUAL 
-            onChange={handleCheckboxChange}
-   />
-            Budget Name {budget.budget_name}
-    
-          </label>
-          
-          {/* Conditionally display budget details */}
-          {isChecked && (
-            <div>
-              <h2>Budget Details for {budget.budget_name}</h2>
-              <ul>
-                <li>Budget Name: {budget.budget_name}</li>
-                <li>
-                  Category:{" "}
-                  {budget.category
-                    ? budget.category.category_description
-                    : "Unknown"}
-                </li>
-                <li>Allocated Amount: {budget.allocated_amount}</li>
-                <li>Spent Amount: {budget.spent_amount}</li>
-                <li>Remaining Balance: {budget.remaining_balance}</li>
-                <li>Days Left: {budget.days_left}</li>
-              </ul>
-            </div>
-          )}
-        </div>
-      );
-    })}
+          <label>Allocated Amount</label>
+          <input
+            type="number"
+            id="allocated_amount"
+            value={editedBudget.allocated_amount || ""}
+            onChange={updateBudget}
+          />
 
+          <label>Days Left</label>
+          <input
+            type="number"
+            id="days_left"
+            value={editedBudget.days_left || ""}
+            onChange={updateBudget}
+          />
 
-{selectedBudget && (
-        <fieldset>
-          <h1>Edit Budget Form</h1>
-          <article>
-            <label>Budget Name</label>
-            <input
-              type="text"
-              id="budget_name"
-               value={editedBudget.budget_name || ""}  // Ensure fallback to empty string
-              onChange={updateBudget}
-            />
+          <select id="myCategories" onChange={(e) => updateCategories(e)}>
+            <option value="">Choose Budget Category to Edit</option>
+            {categories.map((eachCategory) => (
+              <option key={eachCategory.id} value={eachCategory.id}>
+                {eachCategory.category_description}
+              </option>
+            ))}
+          </select>
 
-            <label>Allocated Amount</label>
-            <input
-              type="number"
-              id="allocated_amount"
-              value={editedBudget.allocated_amount || ""}
-              onChange={updateBudget}
-            />
-
-            <label>Days Left</label>
-            <input
-              type="number"
-              id="days_left"
-              value={editedBudget.days_left || ""}
-              onChange={updateBudget}
-            />
-
-  <select id="myCategories" onChange={(e) => updateCategories(e)}>
-        <option value=""> Choose Budget Category to edit </option>
-        {categories.map((eachCategory) => (
-          <option key={eachCategory.id} value={eachCategory.id}>
-            {eachCategory.category_description} - Category Description{" "}
-          </option>
-        ))}
-      </select>
-
-            <button type="button" onClick={handleEdit}>
-              Save Changes
-            </button>
-          </article>
-        </fieldset>
-      )}
-    {/* Display the edited budget */}
+          <button type="button" onClick={handleEdit}>Save Changes</button>
+        </article>
+      </fieldset>
+    )}
+        {/* Success Message */}
     {isEdited && successfulBudget && (
-  <div>
-    <h2>Successfully Edited Budget: {successfulBudget.budget_name}</h2>
-    <ul>
-      <li>Budget Name: {successfulBudget.budget_name}</li>
-      <li>Allocated Amount: {successfulBudget.allocated_amount}</li>
-      <li>Days Left: {successfulBudget.days_left}</li>
-      <li>Category: {
-        categories.find((category) => category.id === parseInt(successfulBudget.categoryId))?.category_description || 'Unknown'
-      }</li>
-      <li>Remaining Balance: {successfulBudget.remaining_balance}</li>
-    </ul>
-  </div>
-)}
+      <div className="success-message">
+        <h2>Successfully Edited Budget: {successfulBudget.budget_name}</h2>
+        <ul>
+          <li>Budget Name: {successfulBudget.budget_name}</li>
+          <li>Allocated Amount: {successfulBudget.allocated_amount}</li>
+          <li>Days Left: {successfulBudget.days_left}</li>
+          <li>
+            Category:{" "}
+            {categories.find((c) => c.id === parseInt(successfulBudget.categoryId))?.category_description || "Unknown"}
+          </li>
+          <li>Remaining Balance: {successfulBudget.remaining_balance}</li>
+        </ul>
+      </div>
+    )}
 
-    { cantCompleteAlert && (
-      <p> your transaction cannot be completed. Your spent amount {editedBudget.spent_amount} would exceed your allocated amount {editedBudget.allocated_amount} 
-      . Please try again and raise your allocated amount by at least {editedBudget.spent_amount - editedBudget.allocated_amount} to be able to successfully update your budget.  </p>
-    )
-
-    }
-  </>
-)
+      {cantCompleteAlert && (
+        <p>
+          {" "}
+          your transaction cannot be completed. Your spent amount{" "}
+          {editedBudget.spent_amount} would exceed your allocated amount{" "}
+          {editedBudget.allocated_amount}. Please try again and raise your
+          allocated amount by at least{" "}
+          {editedBudget.spent_amount - editedBudget.allocated_amount} to be able
+          to successfully update your budget.{" "}
+        </p>
+      )}
+    </>
+  );
 }

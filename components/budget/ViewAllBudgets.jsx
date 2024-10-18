@@ -116,51 +116,84 @@ export const ViewAllBudgets = () => {
   
   return (
     <div>
-        <input 
-        type="text"
-        placeholder="filter by the budgets characteristics"
-        value={filterTerm}
-        onChange={(e) => setFilterTerm(e.target.value)}
+      {/* Input Field Container */}
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "200px",
+          margin: "0 auto 20px",
+          padding: "5px 5px 5px 0" /* Less padding on the left */,
+          boxSizing: "border-box",
+        }}
+      >
+        <input
+          type="text"
+          placeholder="filter by the budgets characteristics"
+          value={filterTerm}
+          onChange={(e) => setFilterTerm(e.target.value)}
+          style={{
+            width: "100%",
+            padding: "8px",
+            fontSize: "0.9rem",
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+            boxSizing: "border-box",
+          }}
         />
+      </div>
 
-      <h1> Your Budgets </h1>
+      <div
+        style={{
+          width: "100%",
+          maxWidth:
+            "200px" /* Adjust max width to ensure it doesn't become too wide */,
+          margin: "10px auto" /* Center it horizontally */,
+          padding: "5px" /* Optional: Add some padding */,
+        }}
+      >
+        <h1>Your Budgets</h1>
+      </div>
+
       {budgets.length > 0 ? (
-              <table>
-                <thead>
-                  <tr>
-                 <th> Budget Name </th>
-              <th> Category </th>
-              <th> Allocated Amount </th>
-              <th> Amount Spent So Far </th>
-              <th> Remaining Balance </th>
-              <th> Days Left Of Budget </th>
-                  </tr>
-                </thead>
-                <tbody>
-                    { budgets.map((budget, index) => {
-                        return (
-                  <tr key={index}>
-                <td> {budget.budget_name}</td>
-                <td> {budget.category ? budget.category.category_description : "Unknown"} </td>
-                <td> {budget.allocated_amount} </td>
-                <td> {budget.spent_amount} </td>
-                <td> {budget.remaining_balance} </td>
-                <td> {budget.days_left} </td>
-                  </tr>
-                        )
-                    })
-                }
-                </tbody>
-              </table>
-          ) : (
-        <p> no budgets found </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Budget Name</th>
+              <th>Category</th>
+              <th>Allocated Amount</th>
+              <th>Amount Spent So Far</th>
+              <th>Remaining Balance</th>
+              <th>Days Left Of Budget</th>
+            </tr>
+          </thead>
+          <tbody>
+            {budgets.map((budget, index) => (
+              <tr key={index}>
+                <td>{budget.budget_name}</td>
+                <td>
+                  {budget.category
+                    ? budget.category.category_description
+                    : "Unknown"}
+                </td>
+                <td>{budget.allocated_amount}</td>
+                <td>{budget.spent_amount}</td>
+                <td>{budget.remaining_balance}</td>
+                <td>{budget.days_left}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No budgets found</p>
       )}
 
-
-{ filterTerm && (
-            <FilteredBudget filterTerm={filterTerm} userId={customerId} budgets={budgets}/>
-        )
-      }
+      {filterTerm && (
+        <FilteredBudget
+          filterTerm={filterTerm}
+          userId={customerId}
+          budgets={budgets}
+        />
+      )}
     </div>
   );
-}
+}  
