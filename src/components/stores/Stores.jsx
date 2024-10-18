@@ -30,6 +30,16 @@ export const Stores = () => {
 
   return (
     <div>
+             {/* Conditionally Render Target Logo */}
+             {location.pathname === "/stores" && (
+        <div style={{ margin: "20px 0", textAlign: "center" }}>
+          <img
+            src="https://banner2.cleanpng.com/20180620/pi/aaz5rqi06.webp"
+            alt="Target Logo"
+            style={{ width: "150px", height: "150px", objectFit: "contain" }}
+          />
+        </div>
+      )}
     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
       <label 
         htmlFor="zipCodeInput" 
@@ -58,6 +68,9 @@ export const Stores = () => {
         onChange={(e) => setProductString(e.target.value)}
       />
     </div>
+
+
+
 
     {/* Conditionally render the button only if both fields have values */}
     {zipCode && productString && (

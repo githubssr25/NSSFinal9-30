@@ -83,20 +83,6 @@
       "date_created": "2024-09-24"
     },
     {
-      "id": 5,
-      "userId": 22,
-      "categoryId": 5,
-      "allocated_amount": 1000,
-      "spent_amount": 500,
-      "remaining_balance": 500,
-      "days_left": 30,
-      "budget_name": "New Car Savings Goal",
-      "isSavingsGoal": true,
-      "savingsValue": 200,
-      "due_date": "2024-11-20",
-      "date_created": "2024-09-20"
-    },
-    {
       "id": 6,
       "userId": 1,
       "categoryId": 6,
@@ -133,34 +119,6 @@
       "savingsValue": 300,
       "due_date": "2024-11-10",
       "date_created": "2024-09-28"
-    },
-    {
-      "id": 9,
-      "userId": 5,
-      "categoryId": 9,
-      "allocated_amount": 150,
-      "spent_amount": 140,
-      "remaining_balance": 10,
-      "days_left": 7,
-      "budget_name": "Clothing for October",
-      "isSavingsGoal": false,
-      "savingsValue": null,
-      "due_date": "2024-10-17",
-      "date_created": "2024-09-29"
-    },
-    {
-      "id": 10,
-      "userId": 6,
-      "categoryId": 10,
-      "allocated_amount": 500,
-      "spent_amount": 300,
-      "remaining_balance": 200,
-      "days_left": 10,
-      "budget_name": "Subscriptions for October",
-      "isSavingsGoal": false,
-      "savingsValue": null,
-      "due_date": "2024-10-20",
-      "date_created": "2024-09-30"
     },
     {
       "id": 11,
