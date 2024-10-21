@@ -45,12 +45,13 @@ export const Login = ({ setCurrentUser, currentUser }) => {
       }
     };
   
+
     return (
       <main className="auth-container">
-        <section>
+        <section className="login-card">
           <form className="auth-form" onSubmit={handleLogin}>
             <h1 className="header">NSS Final Project</h1>
-            <h2>Please sign in</h2>
+            <h2 className="sub-header">Please sign in</h2>
             <input
               type="email"
               value={email}
@@ -59,10 +60,14 @@ export const Login = ({ setCurrentUser, currentUser }) => {
               required
               autoFocus
             />
-            <button className="sign-in-button" type="submit">Sign in</button>
+            <button className="sign-in-button" type="submit">
+              Sign in
+            </button>
           </form>
+          <Link to="/register" className="register-link">
+            Not a member yet?
+          </Link>
         </section>
-        <Link to="/register">Not a member yet?</Link>
       </main>
     );
   };

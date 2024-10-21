@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Modal} from "react-bootstrap";
-import { getBudgetsByUserId, enterMoneySpentForBudget  } from "../../services/BudgetService"; // Adjust path as needed
-import "./EnterMoneySpent.css"; // Import the CSS file
+import { getBudgetsByUserId, enterMoneySpentForBudget  } from "../../services/BudgetService"; 
+import "./EnterMoneySpent.css";
 
 export const  EnterMoneySpent = () => {
   const user = JSON.parse(localStorage.getItem("NSSProject_user"));
-  const customerId = user?.id; // This retrieves the customerId if the user is logged in
+  const customerId = user?.id;
 
   const [yourBudgets, setYourBudgets] = useState([]);
   const [chosenBudget, setYourChosenBudget] = useState({});
@@ -19,12 +19,11 @@ export const  EnterMoneySpent = () => {
     });
   }, [customerId, newBudget, chosenBudget]);
 
-  //reason for this is becasue we dont want to be sending updated budgets back into DB with exapnded objects
   const prepareBudgetForUpdate = (expandedBudget) => {
     return {
       id: expandedBudget.id,
-      userId: expandedBudget.userId, // Keep the userId field
-      categoryId: expandedBudget.categoryId, // Keep the categoryId field
+      userId: expandedBudget.userId, 
+      categoryId: expandedBudget.categoryId, 
       allocated_amount: expandedBudget.allocated_amount,
       spent_amount: expandedBudget.spent_amount,
       remaining_balance: expandedBudget.remaining_balance,
@@ -43,26 +42,21 @@ export const  EnterMoneySpent = () => {
         parseInt(chosenBudget.remaining_balance) - parseInt(enteredMoneySpent),
     };
 
-    const budgetToSend = prepareBudgetForUpdate(updatedBudget); // Convert the budget
+    const budgetToSend = prepareBudgetForUpdate(updatedBudget);
 
     enterMoneySpentForBudget(budgetToSend).then((data) => {
       if (data && data.id) {
         setNewBudget(data);
         setShowModal(true);
-        setYourChosenBudget(data);  // This updates chosenBudget with the latest values
-        console.log("what is data coming back for setNewBudget", data);
-        console.log("money successfully added to budget");
-      } else {
-        console.log("error: adding money to budget failed");
-      }
+        setYourChosenBudget(data);  
+      } 
     });
   };
 
-  const handleCloseModal = () => setShowModal(false); // Sets showModal to false, which hides the modal
+  const handleCloseModal = () => setShowModal(false);
 
   const handleBudgetChange = (event) => {
     const budgetId = parseInt(event.target.value, 10);
-    // event.target.value REMEMBER ONLY GIVES YOU THE OBJECT ID SO THE ID OF THE BUDGET ITSELF YOU CANT ST THAT ISELF THAT WONT DO SHIT
 
     const budget = yourBudgets.find(
       (eachBudget) => parseInt(eachBudget.id) === parseInt(budgetId)
@@ -70,12 +64,10 @@ export const  EnterMoneySpent = () => {
     setYourChosenBudget(budget);
   };
 
-  //if you wanted to incldue category btw this is how you wouldve done it
-  //              Category: {eachBudget.category ? eachBudget.category.category_description : 'Unknown'}
 
   return (
     <section className="enter-money-section">
-      {/* Select Budget Section */}
+
       <div className="select-budget-container">
         <label>Choose your Budget you want to add money to</label>
         <select id="your-budgets" onChange={(e) => handleBudgetChange(e)}>
@@ -104,7 +96,6 @@ export const  EnterMoneySpent = () => {
         />
       </article>
   
-      {/* Submit Button */}
       <button
         type="button"
         onClick={(e) => {

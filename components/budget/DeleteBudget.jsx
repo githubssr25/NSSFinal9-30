@@ -14,19 +14,16 @@ export const DeleteBudget = () => {
   const [deletedBudget, setDeletedBudget] = useState(null);
   const [isDeleted, setIsDeleted] = useState(false);
 
-  // Fetch budgets on component mount
   useEffect(() => {
     getBudgetsByUserId(customerId).then((data) => {
       setBudgets(data); 
     });
   }, [customerId]);
-
-  // Function to handle selecting a budget
   const handleSelect = (event) => {
     const budgetId = parseInt(event.target.value, 10);
     const ourBudget = budgets.find((budget) => budget.id === budgetId);
     setSelectedBudget(ourBudget);
-    setIsDeleted(false); // Reset the delete status when selecting a new budget
+    setIsDeleted(false); 
   };
 
   const handleDelete = () => {
@@ -37,8 +34,8 @@ export const DeleteBudget = () => {
           setDeletedBudget(selectedBudget); 
           setBudgets(
             budgets.filter((budget) => budget.id !== selectedBudget.id)
-          ); // Remove deleted budget from state
-          setSelectedBudget(null); // Reset selected budget
+          ); 
+          setSelectedBudget(null); 
         }
       });
     }
@@ -49,7 +46,7 @@ export const DeleteBudget = () => {
       <h1>Delete Budget</h1>
     </div>
 
-      {/* Select a Budget to Delete */}
+
       <div className="budget-info-container">
         <select id="deleteBudgetSelect" onChange={handleSelect}>
           <option value="">Select a Budget to Delete</option>
@@ -59,8 +56,7 @@ export const DeleteBudget = () => {
             </option>
           ))}
         </select>
-  
-        {/* Display selected budget details */}
+
         {selectedBudget && (
           <div className="selected-budget-container">
             <h2>Selected Budget: {selectedBudget.budget_name}</h2>
@@ -76,7 +72,7 @@ export const DeleteBudget = () => {
           </div>
         )}
   
-        {/* Success message with deleted budget details */}
+
         {isDeleted && deletedBudget && (
           <div className="success-message">
             <h3>Budget {deletedBudget.budget_name} deleted successfully!</h3>

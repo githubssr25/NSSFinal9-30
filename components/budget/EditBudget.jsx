@@ -1,27 +1,25 @@
 import { useState, useEffect } from 'react';
-import { getBudgetsByUserId, editBudget } from '../../services/BudgetService'; // Assuming you already have this
+import { getBudgetsByUserId, editBudget } from '../../services/BudgetService'; 
 import { getAllCategories} from "../../services/CategoryService"
 import './EditBudget.css';
 
 export const EditBudget = () => {
   const user = JSON.parse(localStorage.getItem("NSSProject_user"));
-  const customerId = user?.id; // This retrieves the customerId if the user is logged in
-
-  // Define the states you'll need
+  const customerId = user?.id; 
   const [budgets, setBudgets] = useState([]);
-  const [selectedBudget, setSelectedBudget] = useState({}); // To hold the budget user wants to edit
-  const [editedBudget, setEditedBudget] = useState({}); // To hold the updated budget info
+  const [selectedBudget, setSelectedBudget] = useState({}); 
+  const [editedBudget, setEditedBudget] = useState({}); 
   const [budgetsChecked, setBudgetsChecked] = useState([]);
   const [isEdited, setIsEdited] = useState(false); 
   const [categories, setCategories] = useState([]);
   const [cantCompleteAlert, setCantCompleteAlert] = useState(false);
-  const [successfulBudget, setSuccessfulBudget] = useState(null); // New state to store the successful edit
+  const [successfulBudget, setSuccessfulBudget] = useState(null); 
 
 
-  // Fetch budgets on component mount
+ 
   useEffect(() => {
     getBudgetsByUserId(customerId).then((data) => {
-      setBudgets(data); // Set the fetched budgets in state
+      setBudgets(data); 
     });
   }, [budgets, customerId]);
 
@@ -40,9 +38,8 @@ export const EditBudget = () => {
 
     const ourBudget = budgets.find((budget) => budget.id === budgetId);
     setSelectedBudget(ourBudget);
-    setEditedBudget(ourBudget); // Also set the edited budget initially THIS IS WHAT WE NEED TO 
-    //CHANGE IN ORDER TO ACUTALLY BE ABLE OT EDIT LIKE 500 TO 250 WITHOUT IT AUTOMATICALLY RESETTING BACK TO 250 INBOX
-    setIsEdited(false);  // Reset success message when new budget is chosen YOU NEED TO RE-SET THIS WHEN CHOOSING A NEW ONE
+    setEditedBudget(ourBudget);
+    setIsEdited(false);  
   };
 
   const updateBudget = (event) => {
@@ -54,30 +51,26 @@ export const EditBudget = () => {
   const updateCategories = (event) => {
     const categoryId = event.target.value;
     const copy = { ...editedBudget };
-    copy.categoryId = categoryId;  // Directly set the categoryId field in the budget
+    copy.categoryId = categoryId;  
     setEditedBudget(copy);
   };
 
   const handleCheckboxChange = (event) => {
     const isChecked = event.target.checked;
-    const budgetId = parseInt(event.target.value, 10); // Get the budgetId from the checkbox value
+    const budgetId = parseInt(event.target.value, 10); 
   
-    // Find the budget corresponding to this budgetId
+
     const selectedBudget = budgets.find(budget => budget.id === budgetId);
   
     if (isChecked) {
-      // Add the selected budget to checked budgets
+
       setBudgetsChecked([...budgetsChecked, selectedBudget]);
     } else {
-      // Remove the selected budget from checked budgets
+   
       setBudgetsChecked(budgetsChecked.filter((b) => b.id !== selectedBudget.id));
     }
   };
-  
 
-  //  const isBudgetChecked = (budget) => { ALSO RIGHT 
-//     return budgetsChecked.some((b) => b.id === budget.id);
-//   };
 
 const isBudgetChecked = (budget) => {
     const parameterBudgetId = budget.id;
@@ -91,7 +84,7 @@ const isBudgetChecked = (budget) => {
 
   const handleEdit = () => {
 
-      // Check if the spent amount exceeds the allocated amount
+
       if (editedBudget.spent_amount > editedBudget.allocated_amount) {
         let value = editedBudget.spent_amount - editedBudget.allocated_amount;
         alert(`Warning your spent amount exceeds what your new edited allocated budget would be by ${value}`);
@@ -99,12 +92,11 @@ const isBudgetChecked = (budget) => {
         return;
       }
   
-      // Case 1: If allocated_amount < remaining_balance, cap remaining_balance
       if (editedBudget.allocated_amount < editedBudget.remaining_balance) {
         editedBudget.remaining_balance = editedBudget.allocated_amount;
       }
   
-      // Case 2: If allocated_amount increases, recalculate remaining_balance based on spent_amount
+
       if (selectedBudget.allocated_amount < editedBudget.allocated_amount) {
         editedBudget.remaining_balance = editedBudget.allocated_amount - selectedBudget.spent_amount;
       }
@@ -122,22 +114,16 @@ const isBudgetChecked = (budget) => {
 
     editBudget(budgetToSend).then((data) => {
       if (data && data.id) {
-        // Log success
-        console.log("Budget edited successfully", data);
-        
-        // Update the budgets array with the edited budget
+
         setBudgets(budgets.map(b => b.id === data.id ? data : b));
-    // /?data : b: If the id matches, it replaces the budget in the array with the updated data 
-    // (edited budget). If not, it keeps the original budget (b) unchanged.
     setIsEdited(true);  
-        // Store the successful edited budget separately
         setSuccessfulBudget(data);
   
        //reset selected budget also 
         setSelectedBudget({});
         setEditedBudget({});
 
-        setCantCompleteAlert(false);  // Reset alert state after successful edit
+        setCantCompleteAlert(false); 
       }
     });
   };
@@ -145,13 +131,11 @@ const isBudgetChecked = (budget) => {
 
   return (
     <>
-         {/* Header Section */}
     <div className="header-container">
       <h1>Budgets Available for Editing</h1>
       <h1>To View the Full Details of Any Budget, Click the Check Box Next to It</h1>
     </div>
 
-    {/* Dropdown to Select a Budget */}
     <div className="dropdown-container">
       <select id="myBudget" onChange={(e) => chosenBudget(e)}>
         <option value="">Select a Budget</option>
@@ -163,26 +147,24 @@ const isBudgetChecked = (budget) => {
       </select>
     </div>
 
-    {/* Budgets List Section */}
 
       <div className="budgets-list-container">
       {budgets.map((budget) => {
-        // Move the logic outside JSX
-        const isChecked = isBudgetChecked(budget); // Check if this budget is in the checked list
+        const isChecked = isBudgetChecked(budget); 
         return (
           <div key={budget.id}>
             <label>
               <input
                 type="checkbox"
                 name="budget_name"
-                value={budget.id} // Add this so that you get the budget ID in handleCheckboxChange When a user clicks on a checkbox, it sends a change event to the onChange handler (handleCheckboxChange in this case). By setting the value attribute on the checkbox (value={budget.id}), you're associating each checkbox with a specific budget.id.
-                checked={isBudgetChecked(budget)} // Whether this specific checkbox is checked THIS ONLY CONTROLS VISUALLY IF THE BOX IS CHECKED NOT THE LOGIC OF DISPLAYING IF CHECKED ITS JUST A VISUAL
+                value={budget.id} 
+                checked={isBudgetChecked(budget)}
                 onChange={handleCheckboxChange}
               />
               Budget Name {budget.budget_name}
             </label>
 
-            {/* Conditionally display budget details */}
+    
             {isChecked && (
               <div className="budget-details">
                 <h2>Budget Details for {budget.budget_name}</h2>
@@ -244,7 +226,7 @@ const isBudgetChecked = (budget) => {
         </article>
       </fieldset>
     )}
-        {/* Success Message */}
+    
     {isEdited && successfulBudget && (
       <div className="success-message">
         <h2>Successfully Edited Budget: {successfulBudget.budget_name}</h2>

@@ -1,23 +1,17 @@
 import { useState, useEffect } from "react";
 import "./AddNewBudget.css"; 
 
-// Assuming you have a function to create a new budget and fetch categories
-import { createBudget, getCategories } from "../../services/BudgetService"; // Adjust path as needed
+import { createBudget, getCategories } from "../../services/BudgetService"; 
 
 export const AddNewBudget = () => {
 
     const user = JSON.parse(localStorage.getItem("NSSProject_user"));
     const customerId = user?.id; // This retrieves the customerId if the user is logged in
 
-    const [categories, setCategories] = useState([]);  // Categories for the dropdown
-    // const navigate = useNavigate();  // Hook to navigate after adding budget
+    const [categories, setCategories] = useState([]);  
     const [newBudget, setNewBudget] = useState({});
     const [successfulCreation, setSuccessfulCreation] = useState(false);
-    const [selectedCategoryId, setSelectedCategoryId] = useState("");  // State to hold selected category ID
-// HIS SELECTED CATEGORID IS RELATED TO TEH SELECT ELEMENT AND HOW WE CAN TIE SELECT AND OPTION TOGETHER
-// SELECT IS WAHT CONTROLS THE STATE SO IT IS IN SYNCH with react
-
-        // Fetch categories from the backend when the component mounts
+    const [selectedCategoryId, setSelectedCategoryId] = useState("");  
         useEffect(() => {
             getCategories().then((data) => {
                 setCategories(data);  // Set the fetched categories in state
@@ -25,7 +19,6 @@ export const AddNewBudget = () => {
         }, []);
 
 const addBudget = async () => {
-// { "id": 1, "userId": 1, "categoryId": 1, "allocated_amount": 500, "spent_amount": 250, "remaining_balance": 250, "days_left": 15 },    
     const budgetItem = {
         userId: customerId,
         categoryId: selectedCategoryId,
@@ -48,7 +41,7 @@ const addBudget = async () => {
 }
 
 const handleSubmit = async (event) => {
-    event.preventDefault();  // Prevent the form from reloading the page
+    event.preventDefault(); 
     addBudget();
 }
 
@@ -106,7 +99,7 @@ const updateBudget = (event) => {
                  required
                  />
              </fieldset>
-             <button type="submit">Create Budget</button>  {/* This submit button triggers the form submission */}
+             <button type="submit">Create Budget</button>  
         </form>
         { successfulCreation && (
             <section>
@@ -129,7 +122,7 @@ const updateBudget = (event) => {
                             )
                         }
 
-                            // If the key isn't one of the specific ones, return null (nothing).
+                    
                         return null; 
                       
                     })}

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+
 /* General container styles */
 div {
   margin: 20px;
@@ -10,15 +13,49 @@ div {
   margin-right: auto;
 }
 
+.budget-container {
+  margin: 20px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #f5f7fa, #e4ebf1);
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  max-width: 900px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.budget-header h1 {
+  font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+  font-weight: 600;  /* Semi-bold for a sleek look */
+  font-size: 2.5rem; /* Large font size for emphasis */
+  text-align: center; /* Center the text */
+  color: #222; /* Dark grey for modern contrast */
+  letter-spacing: 1.5px; /* Slight spacing for a clean look */
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background: linear-gradient(135deg, #007bff, #00c6ff); /* Subtle gradient text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Transparent fill for gradient effect */
+}
+
+
 /* Filter input styling */
 input[type="text"] {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 20px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  border-radius: 8px;
+  border: 1px solid #bbb;
   font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s;
 }
+
+input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
 
 /* Table styles */
 table {

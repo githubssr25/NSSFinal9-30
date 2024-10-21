@@ -1,0 +1,83 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* Main container */
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f7b500; /* Vibrant yellow */
+  font-family: 'Inter', sans-serif; /* Clean and modern font */
+  color: #1d1d1d;
+  text-align: center;
+  padding: 10px;
+  gap: 20px;
+}
+
+/* Header styling */
+.welcome-header h1 {
+  font-size: 2.4rem; /* Larger, but responsive size */
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.05em; /* Add slight letter spacing */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  background-color: #fff;
+  padding: 15px 25px;
+  border-radius: 12px;
+  max-width: 300px; /* Limit width */
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Subtle drop shadow */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+/* Subtext styling */
+.subtext {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #3e3e3e;
+  letter-spacing: 0.02em;
+  background-color: #fdfdfd;
+  padding: 10px 20px;
+  border-radius: 8px;
+  max-width: 250px;
+  width: 100%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+  opacity: 0.95;
+}
+
+/* Hover and focus state */
+.welcome-header h1:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+  
+  /* Responsive design */
+/* Responsive design */
+@media (max-width: 768px) {
+    .welcome-header h1 {
+      font-size: 1.6rem;
+      max-width: 80%; /* Adjust for mobile view */
+      max-width: 150px;
+    }
+  
+    .subtext {
+      font-size: 0.9rem;
+      max-width: 80%; /* Adjust for mobile view */
+      max-width: 150px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .welcome-header h1 {
+      font-size: 1.4rem;
+      max-width: 90%; /* Further limit for small screens */
+      max-width: 150px;
+    }
+  
+    .subtext {
+      font-size: 0.85rem;
+      max-width: 90%;
+      max-width: 150px;
+    }
+  }
