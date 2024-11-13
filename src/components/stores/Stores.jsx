@@ -92,7 +92,7 @@ export const Stores = () => {
 
       {storeData.length > 0 && productString && (
         <div>
-          <h3>Stores.jsx rendering</h3>
+          <h3>Store Product Info Is From is Above </h3>
           <ul>
             {storeData.map((store, index) => (
               <li key={index}>

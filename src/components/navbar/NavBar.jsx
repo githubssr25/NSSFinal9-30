@@ -8,6 +8,10 @@ import './navbar.css';
  * @type {import('react').FC<{ finishedEditing: boolean }>}
  */
 
+    // Retrieve userId from localStorage
+    const user = JSON.parse(localStorage.getItem("NSSProject_user"));
+    const userId = user?.id;
+
 export const NavBar = ({finishedEditing}) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -27,6 +31,8 @@ export const NavBar = ({finishedEditing}) => {
         <li><Link to="/stores">Search For Product Info For Chosen Target Stores Across the US To Help With Budgeting</Link></li>
         <li><Link to="/createNotifications"> Create New Notification </Link></li>
         <li><Link to="/deleteNotification"> Delete Notification </Link></li>
+        <li> <Link to={`/viewTransactions/${userId}`}>View Your Budget Transaction History</Link></li>
+
       </ul>
 
       <div className={`notification-container ${isExpanded ? 'expanded' : ''}`}>
